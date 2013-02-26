@@ -33,8 +33,9 @@ public class ItemADS extends ItemArmor implements IArmorTextureProvider
 		else return "/tutorial/armour/tutorial_2.png";
 	}
 	
-	private boolean used = false;
-	
+	private int used = 0;
+	public static int uses;
+	public static int amount;
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
     {
@@ -42,16 +43,17 @@ public class ItemADS extends ItemArmor implements IArmorTextureProvider
 		{
 			if(player.getAir() <= 0)
 			{
-				if(used == false)
+				if(used < uses)
 				{
-					player.setAir(300);
-					used = true;
+					player.setAir(amount);
+					used = used + 1;
+					player.sendChatToPlayer("[DivingGear] "+((uses-used)/2)+" uses left.");
 				}else{}
 			}
 		}
 		else
 		{
-			used = false;
+			used = 0;
 		}
 	}
 }

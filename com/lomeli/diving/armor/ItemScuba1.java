@@ -31,6 +31,8 @@ public class ItemScuba1 extends ItemArmor implements IArmorTextureProvider
 	}
 	
 	private int used = 0;
+	public static int uses;
+	public static int amount;
 	
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
@@ -39,10 +41,11 @@ public class ItemScuba1 extends ItemArmor implements IArmorTextureProvider
 		{
 			if(player.getAir() <= 0)
 			{
-				if(used <= 4)
+				if(used <= uses)
 				{
-					player.setAir(300);
+					player.setAir(amount);
 					used = used + 1;
+					player.sendChatToPlayer("[DivingGear] "+((uses-used)/2)+" uses left.");
 				}else{}
 			}
 		}

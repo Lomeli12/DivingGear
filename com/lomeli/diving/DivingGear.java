@@ -29,9 +29,10 @@ public class DivingGear {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		configDir = event.getModConfigurationDirectory() + "\\MUforRedstone\\";
+		configDir = event.getModConfigurationDirectory() + "\\DivingGearMod\\";
 		
 		ConfigID.configure(event, configDir);
+		ConfigAir.airConfigure(event, configDir);
 		ConfigLang.loadLanguages(event, configDir);
 	}
 	
