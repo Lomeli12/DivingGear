@@ -13,11 +13,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import com.lomeli.diving.lib.*;
 import com.lomeli.diving.core.*;
 import com.lomeli.diving.config.*;
+import com.lomeli.diving.thaumcraft.*;
 
 @Mod(modid=ReferenceStrings.modID,name=ReferenceStrings.modName,version=ReferenceStrings.version)
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 
-public class DivingGear {
+public class DivingGear 
+{
 	@SidedProxy(clientSide = ReferenceStrings.clientProxy, serverSide = ReferenceStrings.commonProxy)
 	public static CommonProxy proxy;
 	
@@ -43,6 +45,8 @@ public class DivingGear {
 		RegisterItems.registerItems();
 		
 		RegisterItems.registerRecipies();
+		
+		ThaumCraftSupport.isThaumInstalled();
 		proxy.registerRenderThings();
 	}
 	

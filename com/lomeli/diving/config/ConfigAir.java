@@ -6,6 +6,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.Configuration;
 
 import com.lomeli.diving.armor.*;
+import com.lomeli.diving.thaumcraft.armor.*;
 
 public class ConfigAir 
 {
@@ -31,6 +32,11 @@ public class ConfigAir
 		
 		ItemScuba2.uses = config.get("Uses", "Scuba2-Uses", 12).getInt();
 		ItemScuba2.amount = config.get("Air", "Scuba2-AirAmount", 300).getInt();
+		
+		//Thaumcraft
+		ItemThaumADS.amount = config.get("Air", "Aqualis-AirAmount", 300).getInt();
+		ItemThaumADS.flux = config.get("Flux", "Aqualis-FluxAmount", 2).getInt();
+		ItemThaumADS.range = config.get("FluxRange", "Aqualis-FluxRange", 300).getInt();
 		
 		config.save();
 	}

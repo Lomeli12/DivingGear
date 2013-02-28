@@ -5,6 +5,8 @@ import java.io.File;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.Configuration;
 
+import com.lomeli.diving.thaumcraft.config.*;
+
 public class ConfigLang 
 {
 	/**
@@ -25,6 +27,8 @@ public class ConfigLang
 		
 		RegisterItems.airTankName = config.get("Item", "AirTank", "Air Tank").value;
 		RegisterItems.doubleTankName = config.get("Item", "DoubleTank", "Double Air Tank").value;
+		
+		RegisterThaum.thaumADS_Name = config.get("ThaumGear", "AqualisH", "Aqualis Helm").value;
 		
 		config.save();
 	}

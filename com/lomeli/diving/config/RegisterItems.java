@@ -9,6 +9,7 @@ import net.minecraftforge.common.EnumHelper;
 
 import com.lomeli.diving.DivingGear;
 import com.lomeli.diving.armor.*;
+import com.lomeli.diving.item.ItemDiving;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;

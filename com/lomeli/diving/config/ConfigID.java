@@ -5,6 +5,8 @@ import java.io.File;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.*;
 
+import com.lomeli.diving.thaumcraft.config.*;
+
 public class ConfigID {
 	/**
 	 * Registered all the id(s) for all the items and other variables
@@ -22,6 +24,8 @@ public class ConfigID {
         
         RegisterItems.airTankID = config.get("Item", "AirTank", 5060).getInt();
         RegisterItems.doubleTankID = config.get("Item", "DoubleTank", 5061).getInt();
+        
+        RegisterThaum.thaumADS_ID = config.get("ThaumGear", "AqualisH", 5080).getInt();
         
         config.save();
 	}
