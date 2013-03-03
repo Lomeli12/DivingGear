@@ -1,14 +1,9 @@
 package com.lomeli.diving;
 
-import net.minecraftforge.common.*;
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.*;
-import cpw.mods.fml.common.registry.*;
-
-import net.minecraft.creativetab.CreativeTabs;
 
 import com.lomeli.diving.lib.*;
 import com.lomeli.diving.core.*;
@@ -43,7 +38,7 @@ public class DivingGear
 	{
 		RegisterItems.registerArmor();
 		RegisterItems.registerItems();
-		
+
 		RegisterItems.registerRecipies();
 		
 		ThaumCraftSupport.isThaumInstalled();

@@ -32,7 +32,7 @@ public class ItemADS extends ItemArmor implements IArmorTextureProvider
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
     {
-		if(player.isWet()==true)
+		if(player.isWet())
 		{
 			if(player.getAir() <= 0)
 			{

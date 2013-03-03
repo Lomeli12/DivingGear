@@ -3,7 +3,6 @@ package com.lomeli.diving.thaumcraft;
 import java.util.logging.Level;
 
 import com.lomeli.diving.core.helper.LogHelper;
-import com.lomeli.diving.thaumcraft.armor.*;
 import com.lomeli.diving.thaumcraft.config.RegisterThaum;
 
 import cpw.mods.fml.common.Loader;
