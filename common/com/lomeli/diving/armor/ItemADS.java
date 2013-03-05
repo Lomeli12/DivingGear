@@ -1,5 +1,8 @@
 package com.lomeli.diving.armor;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
@@ -8,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import net.minecraftforge.common.IArmorTextureProvider;
+
+import com.lomeli.diving.core.AirHandler;
 
 public class ItemADS extends ItemArmor implements IArmorTextureProvider
 {
@@ -29,24 +34,11 @@ public class ItemADS extends ItemArmor implements IArmorTextureProvider
 	private int used = 0;
 	public static int uses;
 	public static int amount;
+	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
     {
-		if(player.isWet())
-		{
-			if(player.getAir() <= 0)
-			{
-				if(used < uses)
-				{
-					player.setAir(amount);
-					used = used + 1;
-					player.sendChatToPlayer("[DivingGear] "+((uses-used)/2)+" uses left.");
-				}else{}
-			}
-		}
-		else
-		{
-			used = 0;
-		}
+		AirHandler.givePlayerAir(player, used, uses, amount);
 	}
 }

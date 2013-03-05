@@ -43,6 +43,14 @@ public class RegisterThaum {
 							"WTW","TGT","ATA", 'T',ItemApi.getItem("itemResource", 2), 'G',Block.glass, 'W',ItemApi.getItem("itemShard", 2), 'A',ItemApi.getItem("itemShard", 0)
 						});
 	}
+	
+	public static void researchAqua()
+	{
+		loadXML();
+		ThaumcraftApi.registerResearchXML(research);
+		new ResearchItem("AQUALIS", new ObjectTags().add(EnumTag.MAGIC, 4).add(EnumTag.WIND, 10).add(EnumTag.WATER, 5).add(EnumTag.ARMOR, 6), -4,3, new ItemStack(thaumADS, 1)).setHidden().registerResearchItem();
+	}
+	
 	public static void loadXML()
 	{
 		try
@@ -90,12 +98,6 @@ public class RegisterThaum {
 		{
 			e.printStackTrace();
 		}
-	}
-	public static void researchAqua()
-	{
-		loadXML();
-		ResearchItem aqualisHelm; 
 		
-		aqualisHelm = new ResearchItem("AQUALIS", new ObjectTags().add(EnumTag.MAGIC, 4).add(EnumTag.WIND, 10).add(EnumTag.WATER, 5).add(EnumTag.ARMOR, 6), -4,3, new ItemStack(thaumADS, 1)).setHidden().registerResearchItem();
 	}
 }

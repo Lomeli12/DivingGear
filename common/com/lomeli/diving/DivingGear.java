@@ -34,7 +34,7 @@ public class DivingGear
 	}
 	
 	@Init
-	public void load(FMLInitializationEvent event)
+	public void main(FMLInitializationEvent event)
 	{
 		RegisterItems.registerArmor();
 		RegisterItems.registerItems();

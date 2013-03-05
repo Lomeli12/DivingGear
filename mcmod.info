@@ -1,0 +1,17 @@
+[
+{
+  "modid": "DivingGear",
+  "name": "Diving Gear",
+  "version": "1.2 Pre-release",
+  "description": "Lets go diving sometime, eh'.",
+  "credits": "Created by Lomeli12",
+  "mcversion": "1.4.7",
+  "authors": [ "Lomeli12" ],
+  "url": "http://www.minecraftforum.net/topic/1706429-147forge-diving-gear-mod",
+  "parent":"",
+  "screenshots": [],
+  "dependencies": [
+         "mod_MinecraftForge"
+]
+}
+]
