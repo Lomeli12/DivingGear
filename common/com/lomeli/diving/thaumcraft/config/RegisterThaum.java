@@ -33,6 +33,9 @@ public class RegisterThaum {
 	public static String thaumADS_Name;
 	public static String thaumTankName;
 	
+	public static ResearchItem visTank;
+	public static ResearchItem aqualisHelm;
+	
 	public static String research = "/com/lomeli/diving/thaumcraft/config/research/research.xml";
 	public static void register()
 	{
@@ -42,16 +45,18 @@ public class RegisterThaum {
 		thaumTank = new ItemAirTankFull(thaumTankID).setIconIndex(33).setItemName("thaumTank");
 		LanguageRegistry.addName(thaumTank, thaumTankName);
 		
-		ThaumcraftApi.addInfusionCraftingRecipe("AQUALIS", "AQUALIS", 50,
-				new ObjectTags().add(EnumTag.ARMOR, 2).add(EnumTag.WATER, 2).add(EnumTag.WIND, 4), 
-				new ItemStack(thaumADS, 1), new Object[]
-						{
-							"WTW","TGT","ATA", 'T',ItemApi.getItem("itemResource", 2), 'G',Block.glass, 'W',ItemApi.getItem("itemShard", 2), 'A',ItemApi.getItem("itemShard", 0)
-						});
-		ThaumcraftApi.addArcaneCraftingRecipe("VISTANK", 20, new ItemStack(thaumTank, 1), new Object[]
+		ThaumcraftApi.addArcaneCraftingRecipe("VISTANK", "VISTANK", 30, new ItemStack(thaumTank, 1), new Object[]
 		{
 			"TGT", "IGI", " T ", 'T',ItemApi.getItem("itemResource", 2), 'I',Item.ingotIron, 'G',Item.glassBottle
 		});
+		
+		ThaumcraftApi.addInfusionCraftingRecipe("AQUALIS", "AQUALIS", 50,
+				new ObjectTags().add(EnumTag.ARMOR, 2).add(EnumTag.WATER, 2).add(EnumTag.WIND, 4), 
+				new ItemStack(thaumADS, 1), new Object[]
+		{
+			"WTW","TGT","ATA", 'T',ItemApi.getItem("itemResource", 2), 'G',thaumTank, 'W',ItemApi.getItem("itemShard", 2), 'A',ItemApi.getItem("itemShard", 0)
+		});
+		
 	}
 	
 	
@@ -59,8 +64,8 @@ public class RegisterThaum {
 	{
 		loadXML();
 		ThaumcraftApi.registerResearchXML(research);
-		ResearchItem visTank = new ResearchItem("VISTANK", new ObjectTags().add(EnumTag.TOOL, 3).add(EnumTag.CONTROL, 2).add(EnumTag.WATER, 2).add(EnumTag.WIND, 5), -4, 3, new ItemStack(thaumTank, 1)).setHidden().registerResearchItem();
-		new ResearchItem("AQUALIS", new ObjectTags().add(EnumTag.MAGIC, 4).add(EnumTag.WIND, 10).add(EnumTag.WATER, 5).add(EnumTag.ARMOR, 6), -7,3, new ItemStack(thaumADS, 1)).setParents(visTank).registerResearchItem();
+		visTank = new ResearchItem("VISTANK", new ObjectTags().add(EnumTag.TOOL, 3).add(EnumTag.CONTROL, 2).add(EnumTag.WATER, 2).add(EnumTag.WIND, 5), -5, 3, new ItemStack(thaumTank, 1)).setParents(new ResearchItem[]{ ResearchList.getResearch("ENCHFABRIC") }).registerResearchItem();
+		aqualisHelm = new ResearchItem("AQUALIS", new ObjectTags().add(EnumTag.MAGIC, 4).add(EnumTag.WIND, 10).add(EnumTag.WATER, 5).add(EnumTag.ARMOR, 6), -7,3, new ItemStack(thaumADS, 1)).setParents(new ResearchItem[] { visTank }).setHidden().registerResearchItem();
 	}
 	
 	public static void loadXML()

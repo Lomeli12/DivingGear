@@ -31,6 +31,7 @@ public class DivingGear
 		ConfigID.configure(event, configDir);
 		ConfigAir.airConfigure(event, configDir);
 		ConfigLang.loadLanguages(event, configDir);
+		ConfigOptions.configure(event, configDir);
 	}
 	
 	@Init

@@ -13,7 +13,9 @@
 	<name>Vis Tank</name>
 	<popupText>Allows items to store Vis.</popupText>
 	<longText></longText>
-	<page type="text">If you are to use magic to enter the ocean, you'll have to invent a way to store that magic. These tank provide that ability, allowing one to in take Vis as air and release water as Flux.</page>
+	<page type="text">One location that is not kind to humans is the ocean. Luckly, like anywhere in the world, the ocean has Aura that one can used to survive out in the blue. Vis Tanks are simply a piece of equipment that, when used correctly, will allow one to breath in Aura as air and breath out water as Flux.
+	
+	However, it is still just a piece of equipment. To take advantage of it, you'll need a bit more.</page>
 	<page type="arcanecrafting">VISTANK</page>
 </project>
 

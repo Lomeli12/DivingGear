@@ -12,6 +12,11 @@ public class ItemAirTankFull extends Item{
 		//airAmount = amount;
 	}
 	
+	public String getTextureFile()
+	{
+		return "/com/lomeli/diving/art/itemsheet1.png";
+	}
+	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
 		
