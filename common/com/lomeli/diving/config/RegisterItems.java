@@ -61,8 +61,14 @@ public class RegisterItems {
 		doubleTank = new ItemDiving(doubleTankID).setItemName("DoubleTank").setIconIndex(17);
 		LanguageRegistry.addName(doubleTank, doubleTankName);
 	}
+	public static boolean hardcore;
+	public static void registerRecipes()
+	{
+		if(hardcore = true) { hardRecipes();}
+		else easyRecipes();
+	}
 	
-	public static void registerRecipies()
+	public static void easyRecipes()
 	{
 		//Items
 		GameRegistry.addRecipe(new ItemStack(airTank, 1), new Object[]
@@ -90,6 +96,36 @@ public class RegisterItems {
 		GameRegistry.addRecipe(new ItemStack(Scuba2, 1), new Object[]
 		{
 			"LIL","ITI","RIR", 'L',(new ItemStack(Item.dyePowder, 1, 4)), 'I',Item.ingotIron, 'R',Item.leather, 'T',doubleTank
+		});
+	}
+	public static void hardRecipes()
+	{
+		//Items
+		GameRegistry.addRecipe(new ItemStack(airTank, 1), new Object[]
+		{
+			"IGI","IGI","LIL", 'I',Item.ingotIron, 'G',Item.diamond, 'L',(new ItemStack(Item.dyePowder, 1, 4))
+		});
+		GameRegistry.addRecipe(new ItemStack(doubleTank, 1), new Object[]
+		{
+			"SIS","TDT","FFF", 'I',Item.ingotIron, 'S',Item.silk, 'T',airTank, 'D',Item.diamond, 'F',Block.netherBrick
+		});
+		
+		//Diving Gear
+		GameRegistry.addRecipe(new ItemStack(Snorkel, 1), new Object[]
+		{
+			"IFI","GSG","LTL", 'L',(new ItemStack(Item.dyePowder, 1, 4)), 'I',Item.ingotIron, 'S',Item.silk, 'G',Block.thinGlass, 'T',Item.glassBottle, 'F',Block.glowStone
+		});
+		GameRegistry.addRecipe(new ItemStack(ADS_T, 1), new Object[]
+		{
+			"SVS","IGI","SIS", 'I',Item.ingotIron, 'V',Block.cobblestoneMossy, 'G',Block.glass, 'S',Block.slowSand
+		});
+		GameRegistry.addRecipe(new ItemStack(Scuba1, 1), new Object[]
+		{
+			"LIL","ITI","RIR", 'L',Block.blockLapis, 'I',Item.ingotIron, 'R',Item.bucketEmpty, 'T',airTank
+		});
+		GameRegistry.addRecipe(new ItemStack(Scuba2, 1), new Object[]
+		{
+			"LIL","ITI","RIR", 'L',Block.blockLapis, 'I',Item.ingotIron, 'R',Item.bucketEmpty, 'T',doubleTank
 		});
 	}
 }

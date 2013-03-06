@@ -10,9 +10,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import net.minecraftforge.common.IArmorTextureProvider;
-
-import com.lomeli.diving.core.AirHandler;
+import net.minecraftforge.common.IArmorTextureProvider;;
 
 public class ItemADS extends ItemArmor implements IArmorTextureProvider
 {
@@ -39,6 +37,21 @@ public class ItemADS extends ItemArmor implements IArmorTextureProvider
 	@SideOnly(Side.CLIENT)
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
     {
-		AirHandler.givePlayerAir(player, used, uses, amount);
+		if(player.isWet())
+		{
+			if(player.getAir() <= 0)
+			{
+				if(used < uses)
+				{
+					player.setAir(amount);
+					used = used + 1;
+					player.sendChatToPlayer("[DivingGear] "+((uses-used)/2)+" uses left.");
+				}else{}
+			}
+		}
+		else
+		{
+			used = 0;
+		}
 	}
 }

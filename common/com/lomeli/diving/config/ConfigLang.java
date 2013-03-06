@@ -29,6 +29,7 @@ public class ConfigLang
 		RegisterItems.doubleTankName = config.get("Item", "DoubleTank", "Double Air Tank").value;
 		
 		RegisterThaum.thaumADS_Name = config.get("ThaumGear", "AqualisH", "Aqualis Helm").value;
+		RegisterThaum.thaumTankName = config.get("ThaumGear", "VisTank", "Vis Tank").value;
 		
 		config.save();
 	}

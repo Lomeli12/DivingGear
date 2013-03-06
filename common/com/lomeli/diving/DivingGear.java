@@ -39,7 +39,7 @@ public class DivingGear
 		RegisterItems.registerArmor();
 		RegisterItems.registerItems();
 
-		RegisterItems.registerRecipies();
+		RegisterItems.registerRecipes();
 		
 		ThaumCraftSupport.isThaumInstalled();
 		proxy.registerRenderThings();

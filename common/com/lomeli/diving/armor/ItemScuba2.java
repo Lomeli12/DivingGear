@@ -33,11 +33,11 @@ public class ItemScuba2 extends ItemArmor implements IArmorTextureProvider
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
     {
-		if(player.isWet()==true)
+		if(player.isWet())
 		{
 			if(player.getAir() <= 0)
 			{
-				if(used <= uses)
+				if(used < uses)
 				{
 					player.setAir(amount);
 					used = used + 1;

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<research>
+
+<project id="AQUALIS">
+	<name>Aqualis Helm</name>
+	<popupText>Protection from the deep blue.</popupText>
+	<longText></longText>
+	<page type="text">As a human, you are limited to the amount of time under the sea. Even with special gear, the ocean is a vile mistress. However, the aura nodes around you can protect you from her anger. With the Aqualis Helm, at the cost of adding flux to the enviroment, you will become sea creature yourself, untouched by natures cruel wrath.</page>
+	<page type="infusioncrafting">AQUALIS</page>
+</project>
+
+<project id="VISTANK">
+	<name>Vis Tank</name>
+	<popupText>Allows items to store Vis.</popupText>
+	<longText></longText>
+	<page type="text">If you are to use magic to enter the ocean, you'll have to invent a way to store that magic. These tank provide that ability, allowing one to in take Vis as air and release water as Flux.</page>
+	<page type="arcanecrafting">VISTANK</page>
+</project>
+
+</research>

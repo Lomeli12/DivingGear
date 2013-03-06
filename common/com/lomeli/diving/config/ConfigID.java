@@ -17,15 +17,16 @@ public class ConfigID {
 		
         config.load();
         
-        RegisterItems.SnorkelID = config.get("Gear", "Snorkel", 5050).getInt();
-        RegisterItems.ADS_TID = config.get("Gear", "ADS-T", 5051).getInt();
-        RegisterItems.Scuba1ID = config.get("Gear", "Scuba1", 5052).getInt();
-        RegisterItems.Scuba2ID = config.get("Gear", "Scuba2", 5053).getInt();
+        RegisterItems.SnorkelID = config.get("Gear", "Snorkel", 6050).getInt();
+        RegisterItems.ADS_TID = config.get("Gear", "ADS-T", 6051).getInt();
+        RegisterItems.Scuba1ID = config.get("Gear", "Scuba1", 6052).getInt();
+        RegisterItems.Scuba2ID = config.get("Gear", "Scuba2", 6053).getInt();
         
-        RegisterItems.airTankID = config.get("Item", "AirTank", 5060).getInt();
-        RegisterItems.doubleTankID = config.get("Item", "DoubleTank", 5061).getInt();
+        RegisterItems.airTankID = config.get("Item", "AirTank", 6060).getInt();
+        RegisterItems.doubleTankID = config.get("Item", "DoubleTank", 6061).getInt();
         
-        RegisterThaum.thaumADS_ID = config.get("ThaumGear", "AqualisH", 5080).getInt();
+        RegisterThaum.thaumADS_ID = config.get("ThaumGear", "AqualisH", 6080).getInt();
+        RegisterThaum.thaumTankID = config.get("ThaumGear", "VisTank", 6081).getInt();
         
         config.save();
 	}
