@@ -64,8 +64,8 @@ public class RegisterThaum {
 	{
 		loadXML();
 		ThaumcraftApi.registerResearchXML(research);
-		visTank = new ResearchItem("VISTANK", new ObjectTags().add(EnumTag.TOOL, 3).add(EnumTag.CONTROL, 2).add(EnumTag.WATER, 2).add(EnumTag.WIND, 5), -5, 3, new ItemStack(thaumTank, 1)).setParents(new ResearchItem[]{ ResearchList.getResearch("ENCHFABRIC") }).registerResearchItem();
-		aqualisHelm = new ResearchItem("AQUALIS", new ObjectTags().add(EnumTag.MAGIC, 4).add(EnumTag.WIND, 10).add(EnumTag.WATER, 5).add(EnumTag.ARMOR, 6), -7,3, new ItemStack(thaumADS, 1)).setParents(new ResearchItem[] { visTank }).setHidden().registerResearchItem();
+		ResearchItem visTank = new ResearchItem("VISTANK", new ObjectTags().add(EnumTag.TOOL, 3).add(EnumTag.CONTROL, 2).add(EnumTag.WATER, 2).add(EnumTag.WIND, 5), -5, 3, new ItemStack(thaumTank, 1)).setHidden().registerResearchItem();
+		new ResearchItem("AQUALIS", new ObjectTags().add(EnumTag.MAGIC, 4).add(EnumTag.WIND, 10).add(EnumTag.WATER, 5).add(EnumTag.ARMOR, 6), -7,3, new ItemStack(thaumADS, 1)).setParents(visTank).setHidden().registerResearchItem();
 	}
 	
 	public static void loadXML()
