@@ -31,6 +31,8 @@ public class ConfigLang
 		RegisterThaum.thaumADS_Name = config.get("ThaumGear", "AqualisH", "Aqualis Helm").value;
 		RegisterThaum.thaumTankName = config.get("ThaumGear", "VisTank", "Vis Tank").value;
 		
+		RegisterBlocks.coralName = config.get("Blocks", "Coral1", "Coral").value;
+		
 		config.save();
 	}
 }

@@ -39,11 +39,13 @@ public class DivingGear
 	{
 		RegisterItems.registerArmor();
 		RegisterItems.registerItems();
+		RegisterBlocks.registerBlock();
 
 		RegisterItems.registerRecipes();
 		
 		ThaumCraftSupport.isThaumInstalled();
 		proxy.registerRenderThings();
+		proxy.initRendering();
 	}
 	
 	@PostInit

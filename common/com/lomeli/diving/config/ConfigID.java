@@ -28,6 +28,8 @@ public class ConfigID {
         RegisterThaum.thaumADS_ID = config.get("ThaumGear", "AqualisH", 6080).getInt();
         RegisterThaum.thaumTankID = config.get("ThaumGear", "VisTank", 6081).getInt();
         
+        RegisterBlocks.coralID = config.get("Blocks", "Coral1", 600).getInt();
+        
         config.save();
 	}
 }
