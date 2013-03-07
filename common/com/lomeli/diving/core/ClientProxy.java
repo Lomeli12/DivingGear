@@ -1,15 +1,11 @@
 package com.lomeli.diving.core;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.client.FMLClientHandler;
-
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.lomeli.diving.lib.RenderIDs;
-import com.lomeli.diving.config.RegisterBlocks;
-import com.lomeli.diving.client.render.RenderCoral;
-import com.lomeli.diving.block.*;
+import com.lomeli.diving.tileentity.*;
 
 public class ClientProxy extends CommonProxy
 {
@@ -17,6 +13,14 @@ public class ClientProxy extends CommonProxy
 	public void registerRenderThings()
 	{
 		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/itemSheet1.png");
+		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/models/Coral.png");
+		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/models/ADS.png");
+		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/models/scubahelm.png");
+		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/models/scuba2helm.png");
+		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/models/snorkel.png");
+		MinecraftForgeClient.preloadTexture("/com/lomeli/diving/art/models/thaumicHelm.png");
+		
+		
 	}
 	
 	public int addArmor(String armor)
@@ -27,8 +31,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void initRendering() {
 		RenderIDs.coralRenderID = RenderingRegistry.getNextAvailableRenderId();
-		RenderCoral coral = new RenderCoral(RenderIDs.coralRenderID);
-		MinecraftForgeClient.registerItemRenderer(RegisterBlocks.coral.blockID, new RenderCoral(RenderIDs.coralRenderID));
-		//MinecraftForgeClient.renderBlock(new RenderCoral(), RegisterBlocks.coral, 0,0,0);
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoral.class, new TileEntityCoralRenderer());
 	}
 }

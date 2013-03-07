@@ -2,8 +2,11 @@ package com.lomeli.diving.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 import com.lomeli.diving.lib.RenderIDs;
+import com.lomeli.diving.tileentity.TileEntityCoral;
 
 public class BlockCoral extends DivingBlock
 {
@@ -16,7 +19,7 @@ public class BlockCoral extends DivingBlock
 	@Override
 	public boolean renderAsNormalBlock() 
 	{
-		return true;
+		return false;
 	}
 	@Override
 	public boolean isOpaqueCube()
@@ -28,7 +31,17 @@ public class BlockCoral extends DivingBlock
 	public int getRenderType()
 	{
 		return RenderIDs.coralRenderID;
-		
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, int meta) 
+	{
+		return new TileEntityCoral();
+	}
+	
+	@Override
+	public boolean hasTileEntity(int metadata) {
+		return true;
 	}
 	
 	@Override
