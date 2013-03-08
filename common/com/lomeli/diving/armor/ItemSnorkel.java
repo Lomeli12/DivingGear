@@ -1,10 +1,12 @@
 package com.lomeli.diving.armor;
 
-import net.minecraft.creativetab.CreativeTabs;
+import com.lomeli.diving.DivingGear;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 import net.minecraftforge.common.IArmorTextureProvider;
@@ -14,7 +16,7 @@ public class ItemSnorkel extends ItemArmor implements IArmorTextureProvider
 	public ItemSnorkel(int par1, EnumArmorMaterial par2EnumArmorMaterial,
 			int par3, int par4) {
 		super(par1, par2EnumArmorMaterial, par3, par4);
-		this.setCreativeTab(CreativeTabs.tabCombat);
+		this.setCreativeTab(DivingGear.divingGearTab);
 	}
 	
 	public String getTextureFile()
@@ -35,6 +37,7 @@ public class ItemSnorkel extends ItemArmor implements IArmorTextureProvider
     {
 		if(player.isWet())
 		{
+			player.addPotionEffect(new PotionEffect(16, -1, 9));
 			if(player.getAir() <= 0)
 			{
 				if(used < uses)
@@ -42,7 +45,7 @@ public class ItemSnorkel extends ItemArmor implements IArmorTextureProvider
 					player.setAir(amount);
 					used = used + 1;
 					player.sendChatToPlayer("[DivingGear] "+((uses-used)/2)+" uses left.");
-				}else{}
+				}
 			}
 		}
 		else

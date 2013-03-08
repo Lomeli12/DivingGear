@@ -25,8 +25,6 @@ public class TileEntityCoralRenderer extends TileEntitySpecialRenderer
 	
 	public void renderModelAt(TileEntityCoral tile, double par2, double par4, double par6, float par8) 
 	{
-        int meta = tile.worldObj.getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
-
         GL11.glPushMatrix();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

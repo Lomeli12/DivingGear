@@ -12,7 +12,6 @@ import org.w3c.dom.NodeList;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.block.Block;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 

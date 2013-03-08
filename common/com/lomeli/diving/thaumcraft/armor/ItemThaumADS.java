@@ -1,8 +1,9 @@
 package com.lomeli.diving.thaumcraft.armor;
 
+import com.lomeli.diving.DivingGear;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
@@ -17,7 +18,7 @@ public class ItemThaumADS extends ItemArmor implements IArmorTextureProvider
 			int par3, int par4) 
 	{
 		super(par1, par2EnumArmorMaterial, par3, par4);
-		this.setCreativeTab(CreativeTabs.tabCombat);
+		this.setCreativeTab(DivingGear.divingGearTab);
 	}
 	public String getTextureFile()
 	{

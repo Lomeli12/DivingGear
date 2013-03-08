@@ -1,7 +1,5 @@
 package com.lomeli.diving.config;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -20,7 +18,7 @@ public class RegisterBlocks {
 	
 	public static void registerBlock()
 	{
-		coral = new BlockCoral(coralID, 0, Material.rock).setBlockName("coral").setHardness(3F).setResistance(3F).setStepSound(Block.soundStoneFootstep);
+		coral = new BlockCoral(coralID, 0, Material.glass).setBlockName("coral").setHardness(3F).setResistance(3F).setStepSound(Block.soundStoneFootstep);
 		GameRegistry.registerBlock(coral, coralName);
 		LanguageRegistry.addName(coral, coralName);
 		

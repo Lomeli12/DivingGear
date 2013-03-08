@@ -4,11 +4,15 @@ import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.*;
+import cpw.mods.fml.common.registry.*;
+
+import net.minecraft.creativetab.CreativeTabs;
 
 import com.lomeli.diving.lib.*;
 import com.lomeli.diving.core.*;
 import com.lomeli.diving.config.*;
 import com.lomeli.diving.thaumcraft.*;
+import com.lomeli.diving.block.gen.*;
 
 @Mod(modid=ReferenceStrings.modID,name=ReferenceStrings.modName,version=ReferenceStrings.version)
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
@@ -20,6 +24,8 @@ public class DivingGear
 	
 	@Instance(ReferenceStrings.modID)
     public static DivingGear instance;
+	
+	public static CreativeTabs divingGearTab = new CreativeTabDiving(CreativeTabs.getNextID(), ReferenceStrings.modName);
 	
 	public static String configDir;
 	
@@ -44,6 +50,9 @@ public class DivingGear
 		RegisterItems.registerRecipes();
 		
 		ThaumCraftSupport.isThaumInstalled();
+		
+		GameRegistry.registerWorldGenerator(new CoralGen());
+		
 		proxy.registerRenderThings();
 		proxy.initRendering();
 	}
