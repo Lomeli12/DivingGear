@@ -1,5 +1,7 @@
 package com.lomeli.diving;
 
+import java.util.logging.Level;
+
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.*;
@@ -12,6 +14,7 @@ import com.lomeli.diving.lib.*;
 import com.lomeli.diving.core.*;
 import com.lomeli.diving.config.*;
 import com.lomeli.diving.thaumcraft.*;
+import com.lomeli.diving.core.helper.*;
 import com.lomeli.diving.block.gen.*;
 
 @Mod(modid=ReferenceStrings.modID,name=ReferenceStrings.modName,version=ReferenceStrings.version)
@@ -29,15 +32,19 @@ public class DivingGear
 	
 	public static String configDir;
 	
+	public static boolean capesOn;
+	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		configDir = event.getModConfigurationDirectory() + "\\DivingGearMod\\";
 		
-		ConfigID.configure(event, configDir);
-		ConfigAir.airConfigure(event, configDir);
-		ConfigLang.loadLanguages(event, configDir);
-		ConfigOptions.configure(event, configDir);
+		LogHelper.log(Level.INFO, configDir);
+		
+		ConfigID.configure(configDir);
+		ConfigAir.airConfigure(configDir);
+		ConfigLang.loadLanguages(configDir);
+		ConfigOptions.configure(configDir);
 	}
 	
 	@Init

@@ -1,10 +1,11 @@
 package com.lomeli.diving.config;
 
 import java.io.File;
+import java.util.logging.Level;
 
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.Configuration;
 
+import com.lomeli.diving.core.helper.LogHelper;
 import com.lomeli.diving.thaumcraft.config.*;
 
 public class ConfigLang 
@@ -13,11 +14,10 @@ public class ConfigLang
 	 * Saves item names to a config file that allows 
 	 * the community to translate it into other languages.
 	 */
-	public static void loadLanguages(FMLPreInitializationEvent event, String Loc)
+	public static void loadLanguages(String Loc)
 	{
-		Configuration config = new Configuration(
-				new File(Loc, "DivingGearLang.cfg"));
-		
+		Configuration config = new Configuration(new File(Loc, "DivingGearLang.cfg"));
+			
 		config.load();
 		
 		RegisterItems.SnorkelName = config.get("Gear", "Snorkel", "Snorkel").getString();

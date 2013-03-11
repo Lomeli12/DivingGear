@@ -13,9 +13,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 @SideOnly(Side.CLIENT)
 public class RenderCoral implements ISimpleBlockRenderingHandler
-{
-	
-	@SuppressWarnings("unused")
+{	
 	private ModelCoral coralModel;
 	
 	public RenderCoral(int ID)
