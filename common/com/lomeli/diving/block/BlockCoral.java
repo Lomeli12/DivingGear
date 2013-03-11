@@ -19,11 +19,9 @@ import com.lomeli.diving.DivingGear;
 
 public class BlockCoral extends Block
 {
-
-	public BlockCoral(int par1, int par2, Material par3Material) {
-		super(par1, par2, par3Material);
+	public BlockCoral(int par1, Material par2Material) {
+		super(par1, par2Material);
 		this.setCreativeTab(DivingGear.divingGearTab);
-		
 	}
 	@Override
 	public boolean renderAsNormalBlock() 

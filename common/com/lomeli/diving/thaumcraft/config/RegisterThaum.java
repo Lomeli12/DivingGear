@@ -38,10 +38,10 @@ public class RegisterThaum {
 	public static String research = "/com/lomeli/diving/thaumcraft/config/research/research.xml";
 	public static void register()
 	{
-		thaumADS = new ItemThaumADS(thaumADS_ID, ThaumcraftApi.armorMatThaumium, DivingGear.proxy.addArmor("ThaumADS"), 0).setIconIndex(32).setItemName("thaumADS");
+		thaumADS = new ItemThaumADS(thaumADS_ID, ThaumcraftApi.armorMatThaumium, DivingGear.proxy.addArmor("ThaumADS"), 0).setUnlocalizedName("thaumADS");
 		LanguageRegistry.addName(thaumADS, thaumADS_Name);
 		
-		thaumTank = new ItemAirTankFull(thaumTankID).setIconIndex(33).setItemName("thaumTank");
+		thaumTank = new ItemAirTankFull(thaumTankID).setUnlocalizedName("thaumTank");
 		LanguageRegistry.addName(thaumTank, thaumTankName);
 		
 		ThaumcraftApi.addArcaneCraftingRecipe("VISTANK", "VISTANK", 30, new ItemStack(thaumTank, 1), new Object[]

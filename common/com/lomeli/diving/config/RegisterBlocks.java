@@ -18,7 +18,7 @@ public class RegisterBlocks {
 	
 	public static void registerBlock()
 	{
-		coral = new BlockCoral(coralID, 0, Material.glass).setBlockName("coral").setHardness(3F).setResistance(3F).setStepSound(Block.soundStoneFootstep);
+		coral = new BlockCoral(coralID, Material.glass).setUnlocalizedName("Coral").setHardness(3F).setResistance(3F).setStepSound(Block.soundStoneFootstep);
 		GameRegistry.registerBlock(coral, coralName);
 		LanguageRegistry.addName(coral, coralName);
 		

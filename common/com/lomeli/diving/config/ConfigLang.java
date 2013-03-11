@@ -20,18 +20,18 @@ public class ConfigLang
 		
 		config.load();
 		
-		RegisterItems.SnorkelName = config.get("Gear", "Snorkel", "Snorkel").value;
-		RegisterItems.ADS_TName = config.get("Gear", "ADS-T", "ADS: 'Tritonia'").value;
-		RegisterItems.Scuba1Name = config.get("Gear", "Scuba1", "Scuba: Single Air Tank").value;
-		RegisterItems.Scuba2Name = config.get("Gear", "Scuba2", "Scuba: Double Air Tank").value;
+		RegisterItems.SnorkelName = config.get("Gear", "Snorkel", "Snorkel").getString();
+		RegisterItems.ADS_TName = config.get("Gear", "ADS-T", "ADS: 'Tritonia'").getString();
+		RegisterItems.Scuba1Name = config.get("Gear", "Scuba1", "Scuba: Single Air Tank").getString();
+		RegisterItems.Scuba2Name = config.get("Gear", "Scuba2", "Scuba: Double Air Tank").getString();
 		
-		RegisterItems.airTankName = config.get("Item", "AirTank", "Air Tank").value;
-		RegisterItems.doubleTankName = config.get("Item", "DoubleTank", "Double Air Tank").value;
+		RegisterItems.airTankName = config.get("Item", "AirTank", "Air Tank").getString();
+		RegisterItems.doubleTankName = config.get("Item", "DoubleTank", "Double Air Tank").getString();
 		
-		RegisterThaum.thaumADS_Name = config.get("ThaumGear", "AqualisH", "Aqualis Helm").value;
-		RegisterThaum.thaumTankName = config.get("ThaumGear", "VisTank", "Vis Tank").value;
+		RegisterThaum.thaumADS_Name = config.get("ThaumGear", "AqualisH", "Aqualis Helm").getString();
+		RegisterThaum.thaumTankName = config.get("ThaumGear", "VisTank", "Vis Tank").getString();
 		
-		RegisterBlocks.coralName = config.get("Blocks", "Coral1", "Coral").value;
+		RegisterBlocks.coralName = config.get("Blocks", "Coral1", "Coral").getString();
 		
 		config.save();
 	}

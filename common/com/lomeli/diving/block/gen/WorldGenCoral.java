@@ -49,7 +49,7 @@ public class WorldGenCoral extends WorldGenerator
 
                             if (var13 == Block.dirt.blockID || var13 == Block.sand.blockID || var13 == Block.blockClay.blockID)
                 			{
-                    			par1World.setBlock(var8, var12, var9, this.coralID);
+                            	
                 			}
                         }
                     }

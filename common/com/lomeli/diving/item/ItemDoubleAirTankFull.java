@@ -11,9 +11,9 @@ import net.minecraft.world.World;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class ItemAirTankFull extends Item{
+public class ItemDoubleAirTankFull extends Item{
 
-	public ItemAirTankFull(int par1) {
+	public ItemDoubleAirTankFull(int par1) {
 		super(par1);
 		this.setCreativeTab(DivingGear.divingGearTab);
 	}
@@ -22,7 +22,7 @@ public class ItemAirTankFull extends Item{
     @SideOnly(Side.CLIENT)
 	public void func_94581_a(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":airtank");
+		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":double");
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)

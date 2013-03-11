@@ -9,7 +9,7 @@ import net.minecraftforge.common.EnumHelper;
 
 import com.lomeli.diving.DivingGear;
 import com.lomeli.diving.armor.*;
-import com.lomeli.diving.item.ItemDiving;
+import com.lomeli.diving.item.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -44,21 +44,21 @@ public class RegisterItems {
 	
 	public static void registerArmor()
 	{
-		Snorkel = new ItemSnorkel(SnorkelID, plastic, DivingGear.proxy.addArmor("Snorkel"), 0).setItemName("Snorkel").setIconIndex(0);
+		Snorkel = new ItemSnorkel(SnorkelID, plastic, DivingGear.proxy.addArmor("Snorkel"), 0).setUnlocalizedName("Snorkel");
 		LanguageRegistry.addName(Snorkel, SnorkelName);
-		ADS_T = new ItemADS(ADS_TID, iron, DivingGear.proxy.addArmor("ADS-T"), 0).setItemName("ADS-T").setIconIndex(1);
+		ADS_T = new ItemADS(ADS_TID, iron, DivingGear.proxy.addArmor("ADS-T"), 0).setUnlocalizedName("ADS-T");
 		LanguageRegistry.addName(ADS_T, ADS_TName);
-		Scuba1 = new ItemScuba1(Scuba1ID, scuba, DivingGear.proxy.addArmor("Scuba1"),0).setItemName("Scuba1").setIconIndex(2);
+		Scuba1 = new ItemScuba1(Scuba1ID, scuba, DivingGear.proxy.addArmor("Scuba1"),0).setUnlocalizedName("Scuba1");
 		LanguageRegistry.addName(Scuba1, Scuba1Name);
-		Scuba2 = new ItemScuba2(Scuba2ID, scuba, DivingGear.proxy.addArmor("Scuba2"),0).setItemName("Scuba2").setIconIndex(3);
+		Scuba2 = new ItemScuba2(Scuba2ID, scuba, DivingGear.proxy.addArmor("Scuba2"),0).setUnlocalizedName("Scuba2");
 		LanguageRegistry.addName(Scuba2, Scuba2Name);
 	}
 	
 	public static void registerItems()
 	{
-		airTank = new ItemDiving(airTankID).setItemName("AirTank").setIconIndex(16);
+		airTank = new ItemAirTankFull(airTankID).setUnlocalizedName("AirTank");
 		LanguageRegistry.addName(airTank, airTankName);
-		doubleTank = new ItemDiving(doubleTankID).setItemName("DoubleTank").setIconIndex(17);
+		doubleTank = new ItemDoubleAirTankFull(doubleTankID).setUnlocalizedName("DoubleTank");
 		LanguageRegistry.addName(doubleTank, doubleTankName);
 	}
 	public static boolean hardcore;
