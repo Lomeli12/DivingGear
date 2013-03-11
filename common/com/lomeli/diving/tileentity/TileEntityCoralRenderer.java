@@ -31,7 +31,7 @@ public class TileEntityCoralRenderer extends TileEntitySpecialRenderer
         GL11.glTranslatef((float) par2, (float) par4 + 1.0F, (float) par6 + 1.0F);
         GL11.glScalef(1.0F, -1.0F, -1.0F);
         GL11.glTranslatef(0.5F, 0.5F - 1F, 0.5F);
-        bindTextureByName("/com/lomeli/diving/art/models/Coral.png");
+        bindTextureByName("/mods/divinggear/textures/models/CoralModel.png");
 
         coralModel.render(0.0625F);
 

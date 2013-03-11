@@ -32,7 +32,7 @@ public class ItemSnorkel extends ItemArmor implements IArmorTextureProvider
 	} 
 	@Override
 	public String getArmorTextureFile(ItemStack itemstack) {
-		return "/com/lomeli/diving/art/models/snorkel.png";
+		return "/mods/divinggear/textures/models/snorkelModel.png";
 	}
 	
 	private int used = 0;

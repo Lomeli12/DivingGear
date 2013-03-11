@@ -32,9 +32,9 @@ public class ItemScuba1 extends ItemArmor implements IArmorTextureProvider
 	}
 	
 	@Override
-	public String getArmorTextureFile(ItemStack itemstack) {
-		return "/com/lomeli/diving/art/models/scubahelm.png";
-
+	public String getArmorTextureFile(ItemStack itemstack) 
+	{
+		return "/mods/divinggear/textures/models/scubahelmModel.png";
 	}
 	
 	private int used = 0;

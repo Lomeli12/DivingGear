@@ -12,12 +12,6 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderThings()
 	{
-		MinecraftForgeClient.preloadTexture("/mods/divinggear/models/Coral.png");
-		MinecraftForgeClient.preloadTexture("/mods/divinggear/models/ADS.png");
-		MinecraftForgeClient.preloadTexture("/mods/divinggear/models/scubahelm.png");
-		MinecraftForgeClient.preloadTexture("/mods/divinggear/models/scuba2helm.png");
-		MinecraftForgeClient.preloadTexture("/mods/divinggear/models/snorkel.png");
-		MinecraftForgeClient.preloadTexture("/mods/divinggear/models/thaumicHelm.png");
 	}
 	
 	public int addArmor(String armor)

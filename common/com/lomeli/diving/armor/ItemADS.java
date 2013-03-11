@@ -12,6 +12,7 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import net.minecraftforge.common.IArmorTextureProvider;;
@@ -33,7 +34,7 @@ public class ItemADS extends ItemArmor implements IArmorTextureProvider
 	
 	@Override
 	public String getArmorTextureFile(ItemStack itemstack) {
-		return "/com/lomeli/diving/art/models/ADS.png";
+		return "/mods/divinggear/textures/models/ADSModel.png";
 	}
 	
 	private int used = 0;

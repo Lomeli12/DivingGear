@@ -20,8 +20,7 @@ public class RegisterBlocks {
 	{
 		coral = new BlockCoral(coralID, Material.glass).setUnlocalizedName("Coral").setHardness(3F).setResistance(3F).setStepSound(Block.soundStoneFootstep);
 		GameRegistry.registerBlock(coral, coralName);
-		LanguageRegistry.addName(coral, coralName);
-		
+		LanguageRegistry.addName(coral, coralName);	
 	}
 
 }
