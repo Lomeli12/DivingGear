@@ -141,3 +141,4 @@ public final class DeveloperCapesAPI {
 		return groupUrls.get(group);
 	}
 }
+	

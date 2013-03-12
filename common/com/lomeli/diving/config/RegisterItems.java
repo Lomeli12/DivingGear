@@ -64,7 +64,7 @@ public class RegisterItems {
 	public static boolean hardcore;
 	public static void registerRecipes()
 	{
-		if(hardcore = true) { hardRecipes();}
+		if(hardcore == true) { hardRecipes();}
 		else easyRecipes();
 	}
 	

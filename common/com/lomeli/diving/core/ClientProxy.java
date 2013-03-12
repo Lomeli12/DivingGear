@@ -2,8 +2,6 @@ package com.lomeli.diving.core;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.client.MinecraftForgeClient;
-
 import com.lomeli.diving.lib.RenderIDs;
 import com.lomeli.diving.tileentity.*;
 import com.lomeli.diving.core.capes.*;
@@ -14,6 +12,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderThings()
 	{
+		renderCapes(DivingGear.capesOn);
 	}
 	
 	public int addArmor(String armor)
@@ -29,13 +28,13 @@ public class ClientProxy extends CommonProxy
 		
 		ClientRegistry.registerTileEntity(TileEntityCoral.class, Integer.toString(RenderIDs.coralRenderID), new TileEntityCoralRenderer());
 		
-		renderCapes(DivingGear.capesOn);
+		
 	}
 	
-	public static void renderCapes(boolean capes)
+	public void renderCapes(boolean capes)
 	{
 		if(capes == true)
-			DeveloperCapesAPI.init("http://anthony-lomeli.net/MinecraftMods/DivingGearMod/devCapes/UserCapes.txt");
-		else{}
+			{DeveloperCapesAPI.init("https://dl.dropbox.com/u/17430088/Minecraft%20Mods/DivingGear/UserCapes.txt");
+			}else{}
 	}
 }

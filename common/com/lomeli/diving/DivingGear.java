@@ -9,11 +9,13 @@ import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.*;
 
 import com.lomeli.diving.lib.*;
 import com.lomeli.diving.core.*;
 import com.lomeli.diving.config.*;
 import com.lomeli.diving.thaumcraft.*;
+import com.lomeli.diving.core.capes.DeveloperCapesAPI;
 import com.lomeli.diving.core.helper.*;
 import com.lomeli.diving.block.gen.*;
 
@@ -38,13 +40,16 @@ public class DivingGear
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		configDir = event.getModConfigurationDirectory() + "\\DivingGearMod\\";
+		//Minecraft.getAppDir("minecraft\\config\\DivingGearMod\\").getPath();
 		
-		LogHelper.log(Level.INFO, configDir);
+		LogHelper.log(Level.INFO, "Loading Configs.");
 		
-		ConfigID.configure(configDir);
-		ConfigAir.airConfigure(configDir);
-		ConfigLang.loadLanguages(configDir);
-		ConfigOptions.configure(configDir);
+		ConfigMod.configureIDs(configDir);
+		ConfigMod.airConfigure(configDir);
+		ConfigMod.loadLanguages(configDir);
+		ConfigMod.configureOptions(configDir);
+		proxy.registerRenderThings();
+		proxy.initRendering();
 	}
 	
 	@Init
@@ -59,9 +64,6 @@ public class DivingGear
 		ThaumCraftSupport.isThaumInstalled();
 		
 		GameRegistry.registerWorldGenerator(new CoralGen());
-		
-		proxy.registerRenderThings();
-		proxy.initRendering();
 	}
 	
 	@PostInit
