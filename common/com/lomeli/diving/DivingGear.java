@@ -1,7 +1,5 @@
 package com.lomeli.diving;
 
-import java.util.logging.Level;
-
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.*;
@@ -9,14 +7,11 @@ import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.client.*;
 
 import com.lomeli.diving.lib.*;
 import com.lomeli.diving.core.*;
 import com.lomeli.diving.config.*;
 import com.lomeli.diving.thaumcraft.*;
-import com.lomeli.diving.core.capes.DeveloperCapesAPI;
-import com.lomeli.diving.core.helper.*;
 import com.lomeli.diving.block.gen.*;
 
 @Mod(modid=ReferenceStrings.modID,name=ReferenceStrings.modName,version=ReferenceStrings.version)
@@ -28,7 +23,7 @@ public class DivingGear
 	public static CommonProxy proxy;
 	
 	@Instance(ReferenceStrings.modID)
-    public static DivingGear instance;
+	public static DivingGear instance;
 	
 	public static CreativeTabs divingGearTab = new CreativeTabDiving(CreativeTabs.getNextID(), ReferenceStrings.modName);
 	
@@ -40,14 +35,14 @@ public class DivingGear
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		configDir = event.getModConfigurationDirectory() + "\\DivingGearMod\\";
-		//Minecraft.getAppDir("minecraft\\config\\DivingGearMod\\").getPath();
 		
-		LogHelper.log(Level.INFO, "Loading Configs.");
-		
+		//Loading Configs.
 		ConfigMod.configureIDs(configDir);
 		ConfigMod.airConfigure(configDir);
 		ConfigMod.loadLanguages(configDir);
 		ConfigMod.configureOptions(configDir);
+		
+		//Rendering stuff
 		proxy.registerRenderThings();
 		proxy.initRendering();
 	}
@@ -55,14 +50,18 @@ public class DivingGear
 	@Init
 	public void main(FMLInitializationEvent event)
 	{
+		//Registers mod items and blocks.
 		RegisterItems.registerArmor();
 		RegisterItems.registerItems();
 		RegisterBlocks.registerBlock();
-
+		
+		//Register Recipes.
 		RegisterItems.registerRecipes();
 		
+		//Checking if Thaumcraft is installed.
 		ThaumCraftSupport.isThaumInstalled();
 		
+		//Starting world Gen.
 		GameRegistry.registerWorldGenerator(new CoralGen());
 	}
 	

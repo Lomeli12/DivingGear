@@ -5,11 +5,7 @@ import java.io.File;
 import net.minecraftforge.common.*;
 
 import com.lomeli.diving.DivingGear;
-import com.lomeli.diving.armor.ItemADS;
-import com.lomeli.diving.armor.ItemScuba1;
-import com.lomeli.diving.armor.ItemScuba2;
-import com.lomeli.diving.armor.ItemSnorkel;
-import com.lomeli.diving.thaumcraft.armor.ItemThaumADS;
+import com.lomeli.diving.lib.ReferenceIntegers;
 import com.lomeli.diving.thaumcraft.config.*;
 
 public class ConfigMod {
@@ -22,18 +18,18 @@ public class ConfigMod {
 		
 		config.load();
        
-		RegisterItems.SnorkelID = config.get("Gear", "Snorkel", 6050).getInt(6050);
-		RegisterItems.ADS_TID = config.get("Gear", "ADS-T", 6051).getInt(6051);
-		RegisterItems.Scuba1ID = config.get("Gear", "Scuba1", 6052).getInt(6052);
-		RegisterItems.Scuba2ID = config.get("Gear", "Scuba2", 6053).getInt(6053);
+		ReferenceIntegers.SnorkelID = config.get("Gear", "Snorkel", 6050).getInt(6050);
+		ReferenceIntegers.ADS_TID = config.get("Gear", "ADS-T", 6051).getInt(6051);
+		ReferenceIntegers.Scuba1ID = config.get("Gear", "Scuba1", 6052).getInt(6052);
+		ReferenceIntegers.Scuba2ID = config.get("Gear", "Scuba2", 6053).getInt(6053);
 		
-		RegisterItems.airTankID = config.get("Item", "AirTank", 6060).getInt(6060);
-		RegisterItems.doubleTankID = config.get("Item", "DoubleTank", 6061).getInt(6061);
+		ReferenceIntegers.airTankID = config.get("Item", "AirTank", 6060).getInt(6060);
+		ReferenceIntegers.doubleTankID = config.get("Item", "DoubleTank", 6061).getInt(6061);
 		
-		RegisterThaum.thaumADS_ID = config.get("ThaumGear", "AqualisH", 6080).getInt(6080);
-		RegisterThaum.thaumTankID = config.get("ThaumGear", "VisTank", 6081).getInt(6081);
+		ReferenceIntegers.thaumADS_ID = config.get("ThaumGear", "AqualisH", 6080).getInt(6080);
+		ReferenceIntegers.thaumTankID = config.get("ThaumGear", "VisTank", 6081).getInt(6081);
 		
-		RegisterBlocks.coralID = config.get("Blocks", "Coral1", 600).getInt(600);
+		ReferenceIntegers.coralID = config.get("Blocks", "Coral1", 600).getInt(600);
 			
 		config.save();
 	}
@@ -47,22 +43,22 @@ public class ConfigMod {
 			
 		config.load();
 		
-		ItemSnorkel.uses = config.get("Uses", "Snorkel-Uses", 1).getInt(2);
-		ItemSnorkel.amount = config.get("Air", "Snorkel-AirAmount", 150).getInt(150);
+		ReferenceIntegers.snorkelUses = config.get("Uses", "Snorkel-Uses", 1).getInt(2);
+		ReferenceIntegers.snorkelAmount = config.get("Air", "Snorkel-AirAmount", 150).getInt(150);
 		
-		ItemADS.uses = config.get("Uses", "ADS-Tritonia-Uses", 1).getInt(2);
-		ItemADS.amount = config.get("Air", "ADS-Tritonia-AirAmount", 300).getInt(300);
+		ReferenceIntegers.adsUses = config.get("Uses", "ADS-Tritonia-Uses", 1).getInt(2);
+		ReferenceIntegers.adsAmount = config.get("Air", "ADS-Tritonia-AirAmount", 300).getInt(300);
 		
-		ItemScuba1.uses = config.get("Uses", "Scuba1-Uses", 6).getInt(6);
-		ItemScuba1.amount = config.get("Air", "Scuba1-AirAmount", 300).getInt(300);
+		ReferenceIntegers.scuba1Uses = config.get("Uses", "Scuba1-Uses", 6).getInt(6);
+		ReferenceIntegers.scuba1Amount = config.get("Air", "Scuba1-AirAmount", 300).getInt(300);
 		
-		ItemScuba2.uses = config.get("Uses", "Scuba2-Uses", 12).getInt(12);
-		ItemScuba2.amount = config.get("Air", "Scuba2-AirAmount", 300).getInt(300);
+		ReferenceIntegers.scuba2Uses = config.get("Uses", "Scuba2-Uses", 12).getInt(12);
+		ReferenceIntegers.scuba2Amount = config.get("Air", "Scuba2-AirAmount", 300).getInt(300);
 		
 		//Thaumcraft
-		ItemThaumADS.amount = config.get("Air", "Aqualis-AirAmount", 300).getInt(300);
-		ItemThaumADS.flux = config.get("Flux", "Aqualis-FluxAmount", 2).getInt(2);
-		ItemThaumADS.range = config.get("FluxRange", "Aqualis-FluxRange", 300).getInt(300);
+		ReferenceIntegers.thaumAmount = config.get("Air", "Aqualis-AirAmount", 300).getInt(300);
+		ReferenceIntegers.fluxAmount = config.get("Flux", "Aqualis-FluxAmount", 2).getInt(2);
+		ReferenceIntegers.visArea = config.get("FluxRange", "Aqualis-FluxRange", 300).getInt(300);
 		
 		config.save();
 	}

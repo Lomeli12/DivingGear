@@ -10,6 +10,7 @@ import net.minecraftforge.common.EnumHelper;
 import com.lomeli.diving.DivingGear;
 import com.lomeli.diving.armor.*;
 import com.lomeli.diving.item.*;
+import com.lomeli.diving.lib.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -35,30 +36,30 @@ public class RegisterItems {
 	public static String airTankName;
 	public static String doubleTankName;
 	
-	public static int SnorkelID;
-	public static int ADS_TID;
-	public static int Scuba1ID;
-	public static int Scuba2ID;
-	public static int airTankID;
-	public static int doubleTankID;
-	
 	public static void registerArmor()
 	{
-		Snorkel = new ItemSnorkel(SnorkelID, plastic, DivingGear.proxy.addArmor("Snorkel"), 0).setUnlocalizedName("Snorkel");
+		Snorkel = new ItemGear(ReferenceIntegers.SnorkelID, plastic, DivingGear.proxy.addArmor("Snorkel"), 0, 
+				ReferenceIntegers.snorkelUses, ReferenceIntegers.snorkelAmount, "snorkel", 
+				"snorkelModel").setUnlocalizedName("Snorkel");
 		LanguageRegistry.addName(Snorkel, SnorkelName);
-		ADS_T = new ItemADS(ADS_TID, iron, DivingGear.proxy.addArmor("ADS-T"), 0).setUnlocalizedName("ADS-T");
+		ADS_T = new ItemGear(ReferenceIntegers.ADS_TID, iron, DivingGear.proxy.addArmor("ADS-T"), 0,
+				ReferenceIntegers.adsUses, ReferenceIntegers.adsAmount, "ads", "ADSModel").setUnlocalizedName("ADS=T");
 		LanguageRegistry.addName(ADS_T, ADS_TName);
-		Scuba1 = new ItemScuba1(Scuba1ID, scuba, DivingGear.proxy.addArmor("Scuba1"),0).setUnlocalizedName("Scuba1");
+		Scuba1 = new ItemGear(ReferenceIntegers.Scuba1ID, scuba, DivingGear.proxy.addArmor("Scuba1"), 0,
+				ReferenceIntegers.scuba1Uses, ReferenceIntegers.scuba1Amount, "scuba",
+				"scubahelmModel").setUnlocalizedName("Scuba1");
 		LanguageRegistry.addName(Scuba1, Scuba1Name);
-		Scuba2 = new ItemScuba2(Scuba2ID, scuba, DivingGear.proxy.addArmor("Scuba2"),0).setUnlocalizedName("Scuba2");
+		Scuba2 = new ItemGear(ReferenceIntegers.Scuba2ID, scuba, DivingGear.proxy.addArmor("Scuba2"), 0,
+				ReferenceIntegers.scuba2Uses, ReferenceIntegers.scuba2Amount, "scuba2",
+				"scuba2helmModel").setUnlocalizedName("Scuba2");
 		LanguageRegistry.addName(Scuba2, Scuba2Name);
 	}
 	
 	public static void registerItems()
 	{
-		airTank = new ItemAirTankFull(airTankID).setUnlocalizedName("AirTank");
+		airTank = new ItemAirTankFull(ReferenceIntegers.airTankID).setUnlocalizedName("AirTank");
 		LanguageRegistry.addName(airTank, airTankName);
-		doubleTank = new ItemDoubleAirTankFull(doubleTankID).setUnlocalizedName("DoubleTank");
+		doubleTank = new ItemDoubleAirTankFull(ReferenceIntegers.doubleTankID).setUnlocalizedName("DoubleTank");
 		LanguageRegistry.addName(doubleTank, doubleTankName);
 	}
 	public static boolean hardcore;
