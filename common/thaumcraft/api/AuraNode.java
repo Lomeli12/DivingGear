@@ -2,6 +2,7 @@ package thaumcraft.api;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class AuraNode implements Serializable {
 	//key
 	public int key;

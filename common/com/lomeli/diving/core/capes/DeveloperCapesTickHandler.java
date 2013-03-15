@@ -24,6 +24,7 @@ public class DeveloperCapesTickHandler implements ITickHandler {
 	private static final Minecraft mc = Minecraft.getMinecraft();
 	private static final DeveloperCapesAPI instance = DeveloperCapesAPI.getInstance();
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		// will not run if there is no world, and if there are player entities in the playerEntities list.

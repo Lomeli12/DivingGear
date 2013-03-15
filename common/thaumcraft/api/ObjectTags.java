@@ -6,6 +6,7 @@ import java.util.Map;
 
 import net.minecraft.item.ItemStack;
 
+@SuppressWarnings("serial")
 public class ObjectTags implements Serializable {
 	
 	public Map<EnumTag,Integer> tags = new HashMap<EnumTag,Integer>();//aspects associated with this object

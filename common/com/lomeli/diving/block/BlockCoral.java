@@ -6,6 +6,8 @@ import static net.minecraftforge.common.ForgeDirection.NORTH;
 import static net.minecraftforge.common.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.ForgeDirection.UP;
 import static net.minecraftforge.common.ForgeDirection.WEST;
+
+
 import net.minecraftforge.common.ForgeDirection;
 
 import net.minecraft.block.Block;
@@ -116,5 +118,4 @@ public class BlockCoral extends Block
 
         return var10 + var11;
     }
-
 }

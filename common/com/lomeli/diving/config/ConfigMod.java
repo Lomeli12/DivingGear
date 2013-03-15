@@ -43,16 +43,16 @@ public class ConfigMod {
 			
 		config.load();
 		
-		ReferenceIntegers.snorkelUses = config.get("Uses", "Snorkel-Uses", 1).getInt(2);
+		ReferenceIntegers.snorkelUses = config.get("Uses", "Snorkel-Uses", 1).getInt(1);
 		ReferenceIntegers.snorkelAmount = config.get("Air", "Snorkel-AirAmount", 150).getInt(150);
 		
-		ReferenceIntegers.adsUses = config.get("Uses", "ADS-Tritonia-Uses", 1).getInt(2);
+		ReferenceIntegers.adsUses = config.get("Uses", "ADS-Tritonia-Uses", 1).getInt(1);
 		ReferenceIntegers.adsAmount = config.get("Air", "ADS-Tritonia-AirAmount", 300).getInt(300);
 		
-		ReferenceIntegers.scuba1Uses = config.get("Uses", "Scuba1-Uses", 6).getInt(6);
+		ReferenceIntegers.scuba1Uses = config.get("Uses", "Scuba1-Uses", 3).getInt(3);
 		ReferenceIntegers.scuba1Amount = config.get("Air", "Scuba1-AirAmount", 300).getInt(300);
 		
-		ReferenceIntegers.scuba2Uses = config.get("Uses", "Scuba2-Uses", 12).getInt(12);
+		ReferenceIntegers.scuba2Uses = config.get("Uses", "Scuba2-Uses", 6).getInt(6);
 		ReferenceIntegers.scuba2Amount = config.get("Air", "Scuba2-AirAmount", 300).getInt(300);
 		
 		//Thaumcraft

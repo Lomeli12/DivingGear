@@ -1,5 +1,6 @@
 package com.lomeli.diving.armor;
 
+import com.lomeli.diving.DivingGear;
 import com.lomeli.diving.lib.ReferenceStrings;
 
 import cpw.mods.fml.relauncher.Side;
@@ -15,8 +16,6 @@ import net.minecraftforge.common.IArmorTextureProvider;
 
 public class ItemGear extends ItemArmor implements IArmorTextureProvider
 {
-	private int used = 0;
-	private int uses;
 	private int amount;
 	private String texture;
 	private String armorTexture;
@@ -24,7 +23,8 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 	public ItemGear(int par1, EnumArmorMaterial par2EnumArmorMaterial,
 			int par3, int par4, int uses, int amount, String texture, String armor) {
 		super(par1, par2EnumArmorMaterial, par3, par4);
-		this.uses = uses;
+		this.setCreativeTab(DivingGear.divingGearTab);
+		this.setMaxDamage(uses + 1);
 		this.amount = amount;
 		this.texture = texture;
 		this.armorTexture = armor;
@@ -52,18 +52,21 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 			player.addPotionEffect(new PotionEffect(16, -1, 9));
 			if(player.getAir() <= 0)
 			{
-				if(used < uses)
+				if(itemStack.getItemDamage() < (itemStack.getMaxDamage() - 1))
 				{
+					//player.sendChatToPlayer(itemStack.getItemDamage()+ " " + itemStack.getMaxItemUseDuration() + " " +  itemStack.getMaxDamage());
 					player.setAir(amount);
-					used = used + 1;
-					player.sendChatToPlayer("[DivingGear] "+((uses-used)/2)+" uses left.");
+					itemStack.damageItem(1, player);
+					player.sendChatToPlayer("[DivingGear] "+(((itemStack.getItemDamage()-itemStack.getMaxDamage())*-1)- 1)+" uses left.");
 				}
 			}
 		}
 		else
 		{
-			used = 0;
+			
+			itemStack.setItemDamage(0);
 		}
 	}
+	
 
 }

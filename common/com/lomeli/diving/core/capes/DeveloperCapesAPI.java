@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -50,6 +49,7 @@ public final class DeveloperCapesAPI {
 	 * 
 	 * @param parTxtUrl
 	 */
+	@SuppressWarnings("static-access")
 	public static void init(String parTxtUrl) {
 		// if no instance is created, make a new instance and register tick handler.
 		if(getInstance() == null) {
