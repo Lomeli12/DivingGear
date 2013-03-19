@@ -32,7 +32,7 @@ public class ClientProxy extends CommonProxy
 	public void renderCapes(boolean capes)
 	{
 		if(capes == true)
-			{DeveloperCapesAPI.init("https://dl.dropbox.com/u/17430088/Minecraft%20Mods/DivingGear/UserCapes.txt");
+			{DeveloperCapesAPI.getInstance().init("https://dl.dropbox.com/u/17430088/Minecraft%20Mods/DivingGear/UserCapes.txt");
 			}else{}
 	}
 }

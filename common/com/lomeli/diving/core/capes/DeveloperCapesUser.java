@@ -2,7 +2,7 @@
  * Copyright (c) Jadar, 2013
  * Developer Capes API by Jadar
  * 
- * version 1.2
+ * version 1.3.1
  */
 package com.lomeli.diving.core.capes;
 

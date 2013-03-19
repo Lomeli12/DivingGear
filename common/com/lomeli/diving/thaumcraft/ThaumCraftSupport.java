@@ -22,7 +22,7 @@ public class ThaumCraftSupport
 			{
 				LogHelper.log(Level.INFO, "Thaumcraft 3 not found!");
 			}
-			}
+		}
 		else
 		{
 			LogHelper.log(Level.INFO, "Thaumcraft 3 not found!!");

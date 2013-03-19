@@ -31,7 +31,7 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 	}
 	
 	@Override
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void func_94581_a(IconRegister iconRegister)
 	{
 		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":"+texture);
@@ -46,7 +46,7 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack)
-    {
+	{
 		if(player.isWet())
 		{
 			player.addPotionEffect(new PotionEffect(16, -1, 9));

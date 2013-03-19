@@ -7,12 +7,14 @@ import static net.minecraftforge.common.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.ForgeDirection.UP;
 import static net.minecraftforge.common.ForgeDirection.WEST;
 
-
 import net.minecraftforge.common.ForgeDirection;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.lomeli.diving.lib.RenderIDs;
@@ -79,6 +81,7 @@ public class BlockCoral extends Block
                par1World.isBlockSolidOnSide(par2, par3 - 1, par4, UP   ) ||
                par1World.isBlockSolidOnSide(par2, par3 + 1, par4, DOWN );
     }
+	
 	@Override
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
     {
@@ -117,5 +120,64 @@ public class BlockCoral extends Block
         }
 
         return var10 + var11;
+    }
+	@Override
+	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+	{
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		if (tile instanceof TileEntityCoral) {
+			return ForgeDirection.getOrientation(((TileEntityCoral) tile).getBlockMetadata()).getOpposite() == side;
+			}
+			return false;
+	}
+	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
+    {
+        int l = par1World.getBlockMetadata(par2, par3, par4);
+        int i1 = l & 7;
+        int j1 = l & 8;
+
+        if (i1 == invertMetadata(1))
+        {
+            if ((MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 1) == 0)
+            {
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, 5 | j1, 2);
+            }
+            else
+            {
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, 6 | j1, 2);
+            }
+        }
+        else if (i1 == invertMetadata(0))
+        {
+            if ((MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 1) == 0)
+            {
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, 7 | j1, 2);
+            }
+            else
+            {
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, 0 | j1, 2);
+            }
+        }
+    }
+
+    public static int invertMetadata(int par0)
+    {
+        switch (par0)
+        {
+            case 0:
+                return 0;
+            case 1:
+                return 5;
+            case 2:
+                return 4;
+            case 3:
+                return 3;
+            case 4:
+                return 2;
+            case 5:
+                return 1;
+            default:
+                return -1;
+        }
     }
 }

@@ -95,6 +95,7 @@ public class ConfigMod {
 		Configuration config = new Configuration(new File(Loc, "DivingGearOptions.cfg"));
 			
 		config.load();
+		
 		RegisterItems.hardcore = config.get("Options", "hardmode", false).getBoolean(false);
         
 		DivingGear.capesOn = config.get("Options", "enable-capes", true).getBoolean(true);

@@ -2,7 +2,7 @@
  * Copyright (c) Jadar, 2013
  * Developer Capes API by Jadar
  * 
- * version 1.2
+ * version 1.3.1
  */
 package com.lomeli.diving.core.capes;
 
@@ -10,7 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -19,11 +19,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public final class DeveloperCapesAPI {
 
-	public static DeveloperCapesAPI instance;
+	private static DeveloperCapesAPI instance;
 
-	private static ConcurrentHashMap<String, DeveloperCapesUser> users;
-	private static ConcurrentHashMap<String, String> groupUrls;
+	private HashMap<String, DeveloperCapesUser> users;
+	private HashMap<String, String> groupUrls;
 
+	private boolean tickSetUp = false;
+	
 	/**
 	 * Object constructor.
 	 * 
@@ -31,14 +33,14 @@ public final class DeveloperCapesAPI {
 	 * @param parDeveloperCape
 	 * @param parTesterCape
 	 */
-	private DeveloperCapesAPI(String parTxtUrl) {
-		users = new ConcurrentHashMap<String, DeveloperCapesUser>();
-		groupUrls = new ConcurrentHashMap<String, String>();
+	private DeveloperCapesAPI() {
+		users = new HashMap<String, DeveloperCapesUser>();
+		groupUrls = new HashMap<String, String>();
 	}
 
 	public static DeveloperCapesAPI getInstance() {
 		if(instance == null) {
-			return null;
+			instance = new DeveloperCapesAPI();
 		}
 		return instance;
 	}
@@ -49,13 +51,7 @@ public final class DeveloperCapesAPI {
 	 * 
 	 * @param parTxtUrl
 	 */
-	@SuppressWarnings("static-access")
-	public static void init(String parTxtUrl) {
-		// if no instance is created, make a new instance and register tick handler.
-		if(getInstance() == null) {
-			instance = new DeveloperCapesAPI(parTxtUrl);
-		}
-
+	public void init(String parTxtUrl) {
 		try {
 			URL url = new URL(parTxtUrl);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -78,12 +74,12 @@ public final class DeveloperCapesAPI {
 							
 							if(subLine.startsWith("http")) {
 								capeUrl = subLine;
-								instance.addGroupUrl(group, capeUrl);
+								getInstance().addGroupUrl(group, capeUrl);
 								continue;
 							}
 							else {
 								username = subLine.toLowerCase();
-								instance.addUser(username, group);
+								getInstance().addUser(username, group);
 							}
 						}
 					}
@@ -91,12 +87,15 @@ public final class DeveloperCapesAPI {
 			}
 		}
 		catch(IOException x) {
+			x.printStackTrace();
 		}
 
-
-		// set up tick handler for capes.
-		TickRegistry.registerTickHandler(new DeveloperCapesTickHandler(), Side.CLIENT);
-
+		// make sure to set up only one tick handler.
+		if(!tickSetUp) {
+			// set up tick handler for capes.
+			TickRegistry.registerTickHandler(new DeveloperCapesTickHandler(), Side.CLIENT);
+			tickSetUp = true;
+		}
 	}
 
 	/**
@@ -104,7 +103,7 @@ public final class DeveloperCapesAPI {
 	 * @param parUsername
 	 * @param parGroup
 	 */
-	public static void addUser(String parUsername, String parGroup) {
+	public void addUser(String parUsername, String parGroup) {
 		if(getUser(parUsername) == null) {
 			users.put(parUsername, (new DeveloperCapesUser(parUsername, parGroup)));
 
@@ -116,7 +115,7 @@ public final class DeveloperCapesAPI {
 	 * @param parUsername
 	 * @return
 	 */
-	public static DeveloperCapesUser getUser(String parUsername)  {
+	public DeveloperCapesUser getUser(String parUsername)  {
 		return users.get(parUsername.toLowerCase());
 	}
 
@@ -125,7 +124,7 @@ public final class DeveloperCapesAPI {
 	 * @param parGroup
 	 * @param parCapeUrl
 	 */
-	public static void addGroupUrl(String parGroup, String parCapeUrl) {
+	public void addGroupUrl(String parGroup, String parCapeUrl) {
 		if(getGroupUrl(parGroup) == null) {
 			groupUrls.put(parGroup, parCapeUrl);
 
@@ -137,8 +136,7 @@ public final class DeveloperCapesAPI {
 	 * @param group
 	 * @return
 	 */
-	public static String getGroupUrl(String group) {
+	public String getGroupUrl(String group) {
 		return groupUrls.get(group);
 	}
 }
-	
