@@ -16,17 +16,24 @@ public class ItemAirTankFull extends Item{
 	public ItemAirTankFull(int par1) {
 		super(par1);
 		this.setCreativeTab(DivingGear.divingGearTab);
+		this.setMaxDamage(50);
+		this.setMaxStackSize(1);
+		this.canRepair = false;
 	}
 	
 	@Override
     @SideOnly(Side.CLIENT)
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":airtank");
+		iconIndex = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":airtank");
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
 		return itemStack;
     }
+	public void onCreated(ItemStack itemStack, World world, EntityPlayer entityPlayer) 
+	{
+		itemStack.damageItem((itemStack.getMaxDamage() - 1), entityPlayer);
+	}
 }

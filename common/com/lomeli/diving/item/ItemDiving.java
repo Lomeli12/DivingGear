@@ -20,8 +20,8 @@ public class ItemDiving extends Item{
 	
 	@Override
     @SideOnly(Side.CLIENT)
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":"+texture);
+		iconIndex = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":"+texture);
 	}
 }

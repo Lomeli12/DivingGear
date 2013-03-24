@@ -26,9 +26,9 @@ public class ItemThaumADS extends ItemArmor implements IArmorTextureProvider
 	
 	@Override
     @SideOnly(Side.CLIENT)
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":thaumichelm.png");
+		iconIndex = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":thaumichelm.png");
 	}
 
 	@Override

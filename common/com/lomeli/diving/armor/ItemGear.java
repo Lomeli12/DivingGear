@@ -1,6 +1,7 @@
 package com.lomeli.diving.armor;
 
 import com.lomeli.diving.DivingGear;
+import com.lomeli.diving.config.RegisterItems;
 import com.lomeli.diving.lib.ReferenceStrings;
 
 import cpw.mods.fml.relauncher.Side;
@@ -32,9 +33,9 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":"+texture);
+		iconIndex = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":"+texture);
 	}
 
 	@Override
@@ -63,8 +64,12 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 		}
 		else
 		{
-			
-			itemStack.setItemDamage(0);
+			if(this.itemID == RegisterItems.Snorkel.itemID)
+			{
+				itemStack.setItemDamage(0);
+			}
+			else
+			{}
 		}
 	}
 	

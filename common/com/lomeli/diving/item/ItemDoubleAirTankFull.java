@@ -20,9 +20,9 @@ public class ItemDoubleAirTankFull extends Item{
 	
 	@Override
     @SideOnly(Side.CLIENT)
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a(ReferenceStrings.modID.toLowerCase() + ":double");
+		iconIndex = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":double");
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)

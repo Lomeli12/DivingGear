@@ -14,6 +14,7 @@ public class ReferenceIntegers
 	
 	//Block IDS
 	public static int coralID;
+	public static int airCompressorID;
 	
 	//Gear uses
 	public static int snorkelUses;

@@ -30,6 +30,7 @@ public class ConfigMod {
 		ReferenceIntegers.thaumTankID = config.get("ThaumGear", "VisTank", 6081).getInt(6081);
 		
 		ReferenceIntegers.coralID = config.get("Blocks", "Coral1", 600).getInt(600);
+		ReferenceIntegers.airCompressorID = config.get("Blocks", "AirCompressor", 601).getInt(601);
 			
 		config.save();
 	}
@@ -84,6 +85,7 @@ public class ConfigMod {
 		RegisterThaum.thaumTankName = config.get("ThaumGear", "VisTank", "Vis Tank").getString();
 		
 		RegisterBlocks.coralName = config.get("Blocks", "Coral1", "Coral").getString();
+		RegisterBlocks.airCompressorName = config.get("Blocks", "AirCompressor", "Air Compressor").getString();
 		
 		config.save();
 	}
