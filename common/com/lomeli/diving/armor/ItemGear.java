@@ -50,7 +50,7 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 	{
 		if(player.isWet())
 		{
-			player.addPotionEffect(new PotionEffect(16, -1, 9));
+			player.addPotionEffect(new PotionEffect(16, -1, 10));
 			if(player.getAir() <= 0)
 			{
 				if(itemStack.getItemDamage() < (itemStack.getMaxDamage() - 1))

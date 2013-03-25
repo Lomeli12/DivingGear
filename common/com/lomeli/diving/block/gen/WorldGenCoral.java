@@ -31,7 +31,7 @@ public class WorldGenCoral extends WorldGenerator
         }
         else
         {
-        	int var6 = par2Random.nextInt(this.numberOfBlocks - 2) + 2;
+        	int var6 = par2Random.nextInt(this.numberOfBlocks - 2) + 1;
             byte var7 = 1;
 
             for (int var8 = par3 - var6; var8 <= par3 + var6; ++var8)

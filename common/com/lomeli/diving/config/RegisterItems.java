@@ -10,6 +10,7 @@ import net.minecraftforge.common.EnumHelper;
 import com.lomeli.diving.DivingGear;
 import com.lomeli.diving.armor.*;
 import com.lomeli.diving.item.*;
+import com.lomeli.diving.item.tools.*;
 import com.lomeli.diving.lib.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -27,6 +28,11 @@ public class RegisterItems {
 	
 	public static Item airTank;
 	public static Item doubleTank;
+	public static Item coralFragment;
+	
+	public static Item coralPick;
+	public static Item coralShovel;
+	public static Item coralSword;
 	
 	public static String SnorkelName;
 	public static String ADS_TName;
@@ -35,6 +41,11 @@ public class RegisterItems {
 	
 	public static String airTankName;
 	public static String doubleTankName;
+	public static String coralFragmentName;
+	
+	public static String coralPickName;
+	public static String coralShovelName;
+	public static String coralSwordName;
 	
 	public static void registerArmor()
 	{
@@ -61,11 +72,24 @@ public class RegisterItems {
 		LanguageRegistry.addName(airTank, airTankName);
 		doubleTank = new ItemDoubleAirTankFull(ReferenceIntegers.doubleTankID).setUnlocalizedName("DoubleTank");
 		LanguageRegistry.addName(doubleTank, doubleTankName);
+		coralFragment = new ItemDiving(ReferenceIntegers.coralFragmentID, "coralshard").setUnlocalizedName("CoralShard");
+		LanguageRegistry.addName(coralFragment, coralFragmentName);
 	}
-	public static boolean hardcore;
+	
+	public static void registerTools()
+	{
+		coralPick = new ItemCoralPickaxe(ReferenceIntegers.pickaxeCoralID).setUnlocalizedName("coralpick");
+		coralShovel = new ItemCoralShovel(ReferenceIntegers.shovelCoralID).setUnlocalizedName("coralspade");
+		coralSword = new ItemCoralSword(ReferenceIntegers.swordCoralID).setUnlocalizedName("coralsword");
+		
+		LanguageRegistry.addName(coralPick, coralPickName);
+		LanguageRegistry.addName(coralShovel, coralShovelName);
+		LanguageRegistry.addName(coralSword, coralSwordName);
+	}
+	
 	public static void registerRecipes()
 	{
-		if(hardcore == true) { hardRecipes();}
+		if(ConfigMod.hardcore == true) { hardRecipes();}
 		else easyRecipes();
 	}
 	
@@ -98,6 +122,20 @@ public class RegisterItems {
 		{
 			"LIL","ITI","RIR", 'L',(new ItemStack(Item.dyePowder, 1, 4)), 'I',Item.ingotIron, 'R',Item.leather, 'T',doubleTank
 		});
+		
+		//Tools
+		GameRegistry.addRecipe(new ItemStack(coralPick, 1), new Object[]
+		{
+			"CCC"," S "," S ", 'C',coralFragment, 'S',Item.stick
+		});
+		GameRegistry.addRecipe(new ItemStack(coralShovel, 1), new Object[]
+		{
+			"C","S","S", 'C',coralFragment, 'S',Item.stick
+		});
+		GameRegistry.addRecipe(new ItemStack(coralSword, 1), new Object[]
+		{
+			"C","C","S", 'C',coralFragment, 'S',Item.stick
+		});
 	}
 	public static void hardRecipes()
 	{
@@ -127,6 +165,20 @@ public class RegisterItems {
 		GameRegistry.addRecipe(new ItemStack(Scuba2, 1), new Object[]
 		{
 			"LIL","ITI","RIR", 'L',Block.blockLapis, 'I',Item.ingotIron, 'R',Item.bucketEmpty, 'T',doubleTank
+		});
+		
+		//Tools
+		GameRegistry.addRecipe(new ItemStack(coralPick, 1), new Object[]
+		{
+			"CCC","ISI","ISI", 'C',coralFragment, 'S',Item.stick, 'I',Item.ingotIron
+		});
+		GameRegistry.addRecipe(new ItemStack(coralShovel, 1), new Object[]
+		{
+			"ICI","S","S", 'C',coralFragment, 'S',Item.stick, 'I',Item.ingotIron
+		});
+		GameRegistry.addRecipe(new ItemStack(coralSword, 1), new Object[]
+		{
+			"ICI","ICI","S", 'C',coralFragment, 'S',Item.stick, 'I',Item.ingotIron
 		});
 	}
 }

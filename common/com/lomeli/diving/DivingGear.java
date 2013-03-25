@@ -53,13 +53,15 @@ public class DivingGear
 		//Registers mod items and blocks.
 		RegisterItems.registerArmor();
 		RegisterItems.registerItems();
+		RegisterItems.registerTools();
 		RegisterBlocks.registerBlock();
 		
 		//Register Recipes.
 		RegisterItems.registerRecipes();
+		RegisterBlocks.registerRecipes();
 		
 		//Checking if Thaumcraft is installed.
-		ThaumCraftSupport.isThaumInstalled();
+		//ThaumCraftSupport.isThaumInstalled();
 		
 		//Starting world Gen.
 		GameRegistry.registerWorldGenerator(new CoralGen());

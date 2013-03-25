@@ -9,6 +9,7 @@ import com.lomeli.diving.lib.ReferenceIntegers;
 import com.lomeli.diving.thaumcraft.config.*;
 
 public class ConfigMod {
+	public static boolean hardcore;
 	/**
 	 * Registered all the id(s) for all the items and other variables
 	 */
@@ -25,6 +26,11 @@ public class ConfigMod {
 		
 		ReferenceIntegers.airTankID = config.get("Item", "AirTank", 6060).getInt(6060);
 		ReferenceIntegers.doubleTankID = config.get("Item", "DoubleTank", 6061).getInt(6061);
+		ReferenceIntegers.coralFragmentID = config.get("Item", "CoralFragment", 6062).getInt(6062);
+		
+		ReferenceIntegers.pickaxeCoralID = config.get("Tools", "CoralPick", 6070).getInt(6070);
+		ReferenceIntegers.shovelCoralID = config.get("Tools", "CoralSpade", 6071).getInt(6071);
+		ReferenceIntegers.swordCoralID = config.get("Tools", "CoralSword", 6072).getInt(6072);
 		
 		ReferenceIntegers.thaumADS_ID = config.get("ThaumGear", "AqualisH", 6080).getInt(6080);
 		ReferenceIntegers.thaumTankID = config.get("ThaumGear", "VisTank", 6081).getInt(6081);
@@ -56,6 +62,8 @@ public class ConfigMod {
 		ReferenceIntegers.scuba2Uses = config.get("Uses", "Scuba2-Uses", 6).getInt(6);
 		ReferenceIntegers.scuba2Amount = config.get("Air", "Scuba2-AirAmount", 300).getInt(300);
 		
+		ReferenceIntegers.coralToolUsage = config.get("Uses", "CoralTools", 200).getInt(200);
+		
 		//Thaumcraft
 		ReferenceIntegers.thaumAmount = config.get("Air", "Aqualis-AirAmount", 300).getInt(300);
 		ReferenceIntegers.fluxAmount = config.get("Flux", "Aqualis-FluxAmount", 2).getInt(2);
@@ -80,6 +88,11 @@ public class ConfigMod {
 		
 		RegisterItems.airTankName = config.get("Item", "AirTank", "Air Tank").getString();
 		RegisterItems.doubleTankName = config.get("Item", "DoubleTank", "Double Air Tank").getString();
+		RegisterItems.coralFragmentName = config.get("Item", "CoralFragment", "Coral Fragment").getString();
+		
+		RegisterItems.coralPickName = config.get("Tools", "CoralPick", "Coral Pickaxe").getString();
+		RegisterItems.coralShovelName = config.get("Tools", "CoralSpade", "Coral Shovel").getString();
+		RegisterItems.coralSwordName = config.get("Tools", "CoralSword", "Coral Sword").getString();
 		
 		RegisterThaum.thaumADS_Name = config.get("ThaumGear", "AqualisH", "Aqualis Helm").getString();
 		RegisterThaum.thaumTankName = config.get("ThaumGear", "VisTank", "Vis Tank").getString();
@@ -98,7 +111,7 @@ public class ConfigMod {
 			
 		config.load();
 		
-		RegisterItems.hardcore = config.get("Options", "hardmode", false).getBoolean(false);
+		hardcore = config.get("Options", "hardmode", false).getBoolean(false);
         
 		DivingGear.capesOn = config.get("Options", "enable-capes", true).getBoolean(true);
         

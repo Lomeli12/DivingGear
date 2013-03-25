@@ -11,16 +11,23 @@ public class ReferenceIntegers
 	public static int doubleTankID;
 	public static int thaumADS_ID;
 	public static int thaumTankID;
+	public static int coralFragmentID;
 	
-	//Block IDS
+	//Block IDs
 	public static int coralID;
 	public static int airCompressorID;
+	
+	//Tool IDs
+	public static int pickaxeCoralID;
+	public static int shovelCoralID;
+	public static int swordCoralID;
 	
 	//Gear uses
 	public static int snorkelUses;
 	public static int adsUses;
 	public static int scuba1Uses;
 	public static int scuba2Uses;
+	public static int coralToolUsage;
 	
 	//Air amount
 	public static int snorkelAmount;

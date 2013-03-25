@@ -23,31 +23,31 @@ import net.minecraft.world.World;
 public class BlockAirCompressor extends BlockContainer
 {
 
-	private Icon[] icons = new Icon[3];
+	private Icon[] icons = new Icon[4];
 	
 	public BlockAirCompressor(int par1) {
 		super(par1, Material.iron);
 		this.setCreativeTab(DivingGear.divingGearTab);
-		
 	}
 
 	@Override
-    public boolean hasTileEntity(int metadata) {
+    public boolean hasTileEntity(int metadata) 
+	{
         return true;
     }
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityAirCompressor();
 	}
-	
+	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4)
-    {
+	{
         super.onBlockAdded(par1World, par2, par3, par4);
         this.setDefaultDirection(par1World, par2, par3, par4);
     }
 	
 	private void setDefaultDirection(World par1World, int par2, int par3, int par4)
-    {
+	{
         if (!par1World.isRemote)
         {
             int l = par1World.getBlockId(par2, par3, par4 - 1);
@@ -80,8 +80,9 @@ public class BlockAirCompressor extends BlockContainer
         }
     }
 	
+	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
-    {
+	{
         int l = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
         if (l == 0)
@@ -111,6 +112,7 @@ public class BlockAirCompressor extends BlockContainer
         icons[0] = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":air_compressor/aircompressor_side_top");
         icons[1] = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":air_compressor/aircompressor_side_default");
         icons[2] = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":air_compressor/aircompressor_side_front");
+        icons[3] = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":air_compressor/aircompressor_side_front_off");
     }
     @Override
     @SideOnly(Side.CLIENT)
@@ -132,6 +134,11 @@ public class BlockAirCompressor extends BlockContainer
     			}
     		}
     	}
+    	else
+    	{
+    		
+    	}
     	return true;
     }
+
 }
