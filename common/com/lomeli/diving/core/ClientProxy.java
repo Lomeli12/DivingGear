@@ -27,6 +27,8 @@ public class ClientProxy extends CommonProxy
 		
 		RenderIDs.coralRenderID = RenderingRegistry.getNextAvailableRenderId();
 		
+		ClientRegistry.registerTileEntity(TileEntityAirCompressor.class, "aircompressor", new TileEntityAirCompressorRenderer());
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoral.class, new TileEntityCoralRenderer());
 		RenderingRegistry.registerBlockHandler(RenderIDs.coralRenderID, new RenderCoral(RenderIDs.coralRenderID));
 		

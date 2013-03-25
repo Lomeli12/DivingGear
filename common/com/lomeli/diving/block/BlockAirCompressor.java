@@ -124,14 +124,14 @@ public class BlockAirCompressor extends BlockContainer
     public Icon getBlockTextureFromSideAndMetadata(int side, int meta) 
     {
     	
-    	return side == 1 ? icons[0] : (side == 0 ? icons[0] : (side != meta ? icons[1] : icons[3]));
+    	return side == 1 ? icons[0] : (side == 0 ? icons[1] : (side != meta ? icons[1] : icons[2]));
     }
     
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t) 
     {
     	Item[] armor = new Item[] {RegisterItems.ADS_T, RegisterItems.Scuba1, RegisterItems.Scuba2};
-    	Item[] refillable = new Item[] {RegisterItems.ADS_T, RegisterItems.Scuba1, RegisterItems.Scuba2, RegisterItems.airTank};
+    	Item[] refillable = new Item[] {RegisterItems.ADS_T, RegisterItems.Scuba1, RegisterItems.Scuba2, RegisterItems.airTank, RegisterItems.doubleTank};
     	if(player.inventory.getCurrentItem() != null)
     	{
     		for(Item item : refillable)

@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import com.lomeli.diving.thaumcraft.armor.ItemThaumADS;
-import com.lomeli.diving.item.ItemAirTankFull;
+import com.lomeli.diving.item.ItemDiving;
 import com.lomeli.diving.DivingGear;
 import com.lomeli.diving.lib.*;
 
@@ -42,7 +42,7 @@ public class RegisterThaum {
 		thaumADS = new ItemThaumADS(ReferenceIntegers.thaumADS_ID, ThaumcraftApi.armorMatThaumium, DivingGear.proxy.addArmor("ThaumADS"), 0).setUnlocalizedName("thaumADS");
 		LanguageRegistry.addName(thaumADS, thaumADS_Name);
 		
-		thaumTank = new ItemAirTankFull(ReferenceIntegers.thaumTankID).setUnlocalizedName("thaumTank");
+		thaumTank = new ItemDiving(ReferenceIntegers.thaumTankID, "visTank").setUnlocalizedName("thaumTank");
 		LanguageRegistry.addName(thaumTank, thaumTankName);
 		
 		ThaumcraftApi.addArcaneCraftingRecipe("VISTANK", "VISTANK", 30, new ItemStack(thaumTank, 1), new Object[]
