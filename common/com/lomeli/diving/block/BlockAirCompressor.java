@@ -14,6 +14,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -35,10 +36,12 @@ public class BlockAirCompressor extends BlockContainer
 	{
         return true;
     }
+	
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityAirCompressor();
 	}
+	
 	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4)
 	{
@@ -105,6 +108,7 @@ public class BlockAirCompressor extends BlockContainer
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 4, 2);
         }
     }
+	
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister) {
@@ -114,30 +118,47 @@ public class BlockAirCompressor extends BlockContainer
         icons[2] = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":air_compressor/aircompressor_side_front");
         icons[3] = iconRegister.registerIcon(ReferenceStrings.modID.toLowerCase() + ":air_compressor/aircompressor_side_front_off");
     }
+    
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getBlockTextureFromSideAndMetadata(int side, int meta) 
     {
-    	return side == 1 ? icons[0] : (side == 0 ? icons[0] : (side != meta ? icons[1] : icons[2]));
+    	
+    	return side == 1 ? icons[0] : (side == 0 ? icons[0] : (side != meta ? icons[1] : icons[3]));
     }
+    
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t) 
     {
+    	Item[] armor = new Item[] {RegisterItems.ADS_T, RegisterItems.Scuba1, RegisterItems.Scuba2};
+    	Item[] refillable = new Item[] {RegisterItems.ADS_T, RegisterItems.Scuba1, RegisterItems.Scuba2, RegisterItems.airTank};
     	if(player.inventory.getCurrentItem() != null)
     	{
-    		if(player.inventory.getCurrentItem().itemID == RegisterItems.airTank.itemID || player.inventory.getCurrentItem().itemID == RegisterItems.Scuba1.itemID ||
-    			player.inventory.getCurrentItem().itemID == RegisterItems.Scuba2.itemID || player.inventory.getCurrentItem().itemID == RegisterItems.ADS_T.itemID)
+    		for(Item item : refillable)
     		{
-    			if(world.isBlockIndirectlyGettingPowered(x, y, z))
+    			if(player.inventory.getCurrentItem().itemID == item.itemID)
     			{
-    				player.inventory.getCurrentItem().setItemDamage(0);
+    				if(world.isBlockIndirectlyGettingPowered(x, y, z))
+    				{
+    					player.inventory.getCurrentItem().setItemDamage(0);
+    				}
     			}
     		}
-    	}
-    	else
-    	{
     		
-    	}
+    	}else{}
+    	if(player.inventory.armorItemInSlot(3) != null)
+    	{
+    		for(Item item : armor)
+    		{
+    			if(player.inventory.armorItemInSlot(3).itemID == item.itemID)
+    			{
+    				if(world.isBlockIndirectlyGettingPowered(x, y, z))
+    				{
+    					player.inventory.armorItemInSlot(3).setItemDamage(0);
+    				}
+    			}
+    		}
+    	}else{}
     	return true;
     }
 

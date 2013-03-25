@@ -23,6 +23,6 @@ public class CoralGen implements IWorldGenerator{
 		int Xcoord = blockX + random.nextInt(16);
 		int Ycoord = random.nextInt(80);
 		int Zcoord = blockZ + random.nextInt(16);
-		new WorldGenCoral(4).generate(world, random, Xcoord, Ycoord, Zcoord);
+		new WorldGenCoral(6).generate(world, random, Xcoord, Ycoord, Zcoord);
 	}
 }

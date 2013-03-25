@@ -62,7 +62,7 @@ public class ConfigMod {
 		ReferenceIntegers.scuba2Uses = config.get("Uses", "Scuba2-Uses", 6).getInt(6);
 		ReferenceIntegers.scuba2Amount = config.get("Air", "Scuba2-AirAmount", 300).getInt(300);
 		
-		ReferenceIntegers.coralToolUsage = config.get("Uses", "CoralTools", 200).getInt(200);
+		ReferenceIntegers.coralToolUsage = config.get("Uses", "CoralTools", 500).getInt(500);
 		
 		//Thaumcraft
 		ReferenceIntegers.thaumAmount = config.get("Air", "Aqualis-AirAmount", 300).getInt(300);

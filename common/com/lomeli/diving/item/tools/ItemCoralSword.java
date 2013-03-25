@@ -1,6 +1,7 @@
 package com.lomeli.diving.item.tools;
 
 import com.lomeli.diving.DivingGear;
+import com.lomeli.diving.config.RegisterItems;
 import com.lomeli.diving.lib.ReferenceIntegers;
 import com.lomeli.diving.lib.ReferenceStrings;
 
@@ -40,7 +41,13 @@ public class ItemCoralSword extends ItemSword
 			{
 				if(entity.isWet())
 				{
-					((EntityPlayer) entity).addPotionEffect(new PotionEffect(5, -1, 2));
+					if(((EntityPlayer) entity).inventory.getCurrentItem() != null)
+					{
+						if(((EntityPlayer) entity).inventory.getCurrentItem().itemID == RegisterItems.coralSword.itemID)
+						{
+							((EntityPlayer) entity).addPotionEffect(new PotionEffect(5, -1, 2));
+						}
+					}
 				}
 			}
 		}

@@ -43,7 +43,6 @@ public class DivingGear
 		ConfigMod.configureOptions(configDir);
 		
 		//Rendering stuff
-		proxy.registerRenderThings();
 		proxy.initRendering();
 	}
 	
@@ -61,7 +60,7 @@ public class DivingGear
 		RegisterBlocks.registerRecipes();
 		
 		//Checking if Thaumcraft is installed.
-		//ThaumCraftSupport.isThaumInstalled();
+		ThaumCraftSupport.isThaumInstalled();
 		
 		//Starting world Gen.
 		GameRegistry.registerWorldGenerator(new CoralGen());
