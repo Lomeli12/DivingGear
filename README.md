@@ -6,7 +6,8 @@ Adds some diving gear for a better aquatic play in Minecraft. Now with Thaumcraf
 ## Info
 
 - Requires Minecraft 1.5.1
-- Requires MinecraftForge 7.7.0.600 (src for Devs, Universal for users) http://files.minecraftforge.net/
+- Requires MinecraftForge 7.7.1.629 (src for Devs, Universal for users) http://files.minecraftforge.net/
+- Developers ONLY: Requires MCP http://mcp.ocean-labs.de/index.php/Main_Page
 - Licensed under the LGPL 3.0(http://www.gnu.org/licenses/lgpl-3.0.txt)
 - I don't plan on adding fish due to the number of mods that already do this.
 
