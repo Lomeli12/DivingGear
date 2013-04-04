@@ -1,15 +1,16 @@
 package thaumcraft.api.crafting;
 
-import thaumcraft.api.ObjectTags;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import thaumcraft.api.ObjectTags;
 
 public interface IInfusionRecipe
 {
     /**
      * Used to check if a recipe matches current crafting inventory
-     * @param player 
+     * 
+     * @param player
      */
     boolean matches(IInventory var1, EntityPlayer player);
 
@@ -24,7 +25,10 @@ public interface IInfusionRecipe
     int getRecipeSize();
 
     ItemStack getRecipeOutput();
+
     int getCost();
+
     ObjectTags getTags();
+
     String getKey();
 }

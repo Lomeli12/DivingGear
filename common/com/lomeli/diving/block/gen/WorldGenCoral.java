@@ -2,12 +2,12 @@ package com.lomeli.diving.block.gen;
 
 import java.util.Random;
 
-import com.lomeli.diving.config.RegisterBlocks;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import com.lomeli.diving.config.RegisterBlocks;
 
 public class WorldGenCoral extends WorldGenerator
 {
@@ -19,19 +19,19 @@ public class WorldGenCoral extends WorldGenerator
 
     public WorldGenCoral(int amount)
     {
-        this.coralID = RegisterBlocks.coral.blockID;
-        this.numberOfBlocks = amount;
+        coralID = RegisterBlocks.coral.blockID;
+        numberOfBlocks = amount;
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    @Override
+    public boolean generate(World par1World, Random par2Random, int par3,
+            int par4, int par5)
     {
         if (par1World.getBlockMaterial(par3, par4, par5) != Material.water)
-        {
             return false;
-        }
         else
         {
-        	int var6 = par2Random.nextInt(this.numberOfBlocks - 2) + 1;
+            int var6 = par2Random.nextInt(numberOfBlocks) + 2;
             byte var7 = 1;
 
             for (int var8 = par3 - var6; var8 <= par3 + var6; ++var8)
@@ -47,10 +47,13 @@ public class WorldGenCoral extends WorldGenerator
                         {
                             int var13 = par1World.getBlockId(var8, var12, var9);
 
-                            if (var13 == Block.dirt.blockID || var13 == Block.sand.blockID || var13 == Block.blockClay.blockID)
-                			{
-                            	par1World.setBlock(var8, var12, var9, this.coralID);
-                			}
+                            if (var13 == Block.dirt.blockID
+                                    || var13 == Block.sand.blockID
+                                    || var13 == Block.blockClay.blockID
+                                    || var13 == Block.stone.blockID)
+                            {
+                                par1World.setBlock(var8, var12, var9, coralID);
+                            }
                         }
                     }
                 }

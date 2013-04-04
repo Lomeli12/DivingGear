@@ -6,22 +6,26 @@
  */
 package com.lomeli.diving.core.capes;
 
-public class DeveloperCapesUser {
-	
-	private final String username;
-	private final String group;
-	
-	DeveloperCapesUser(String parUsername, String parGroup) {
-		username = parUsername;
-		group = parGroup;
-		
-	}
-	
-	public String getUsername() {
-		return this.username;
-	}
-	
-	public String getGroup() {
-		return this.group;
-	}
+public class DeveloperCapesUser
+{
+
+    private final String username;
+    private final String group;
+
+    DeveloperCapesUser(String parUsername, String parGroup)
+    {
+        username = parUsername;
+        group = parGroup;
+
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public String getGroup()
+    {
+        return group;
+    }
 }
