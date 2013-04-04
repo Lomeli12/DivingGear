@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLLog;
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ThaumcraftApiHelper
 {
     public static ObjectTags cullTags(ObjectTags temp)

@@ -58,7 +58,7 @@ public class RegisterItems
                 ReferenceIntegers.scuba2Uses, ReferenceIntegers.scuba2Amount,
                 "scuba2", "scuba2helmModel").setUnlocalizedName("Scuba2")
                 .setCreativeTab(DivingGear.divingGearTab);
-        
+
         LanguageRegistry.addName(Snorkel, SnorkelName);
         LanguageRegistry.addName(ADS_T, ADS_TName);
         LanguageRegistry.addName(Scuba1, Scuba1Name);
@@ -76,7 +76,7 @@ public class RegisterItems
         coralFragment = new ItemDiving(ReferenceIntegers.coralFragmentID,
                 "coralshard").setUnlocalizedName("CoralShard").setCreativeTab(
                 DivingGear.divingGearTab);
-        
+
         LanguageRegistry.addName(airTank, airTankName);
         LanguageRegistry.addName(doubleTank, doubleTankName);
         LanguageRegistry.addName(coralFragment, coralFragmentName);

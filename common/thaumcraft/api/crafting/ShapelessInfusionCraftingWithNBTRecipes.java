@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTBase;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ShapelessInfusionCraftingWithNBTRecipes implements IInfusionRecipe
 {
     /** Is the ItemStack that you get when craft the recipe. */

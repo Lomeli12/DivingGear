@@ -31,6 +31,7 @@ import cpw.mods.fml.common.FMLLog;
  * @author Azanor
  * 
  */
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ThaumcraftApi
 {
 

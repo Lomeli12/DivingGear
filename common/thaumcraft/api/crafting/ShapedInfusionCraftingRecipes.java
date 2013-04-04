@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
 
+@SuppressWarnings({ "rawtypes" })
 public class ShapedInfusionCraftingRecipes implements IInfusionRecipe
 {
     /** How many horizontal slots this recipe is wide. */

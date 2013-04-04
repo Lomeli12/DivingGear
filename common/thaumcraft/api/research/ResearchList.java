@@ -6,6 +6,7 @@ import java.util.Map;
 
 import thaumcraft.api.EnumTag;
 
+@SuppressWarnings("rawtypes")
 public class ResearchList
 {
 

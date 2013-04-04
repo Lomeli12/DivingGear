@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.ThaumcraftApiHelper;
 
+@SuppressWarnings("rawtypes")
 public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
 {
     /** How many horizontal slots this recipe is wide. */

@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.ThaumcraftApiHelper;
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
 {
     /** Is the ItemStack that you get when craft the recipe. */
