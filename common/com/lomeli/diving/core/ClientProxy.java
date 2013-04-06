@@ -22,7 +22,10 @@ public class ClientProxy extends CommonProxy
     public void initRendering()
     {
         RenderIDs.coralRenderID = RenderingRegistry.getNextAvailableRenderId();
+        
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoral.class,
+                new TileEntityCoralRenderer());
+        ClientRegistry.registerTileEntity(TileEntityCoral.class, "coral",
                 new TileEntityCoralRenderer());
         MinecraftForgeClient.registerItemRenderer(RegisterBlocks.coral.blockID,
                 new ItemCoralRenderer());

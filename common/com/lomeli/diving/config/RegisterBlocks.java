@@ -44,25 +44,6 @@ public class RegisterBlocks
 
     public static void registerRecipes()
     {
-        if (ConfigMod.hardcore == true)
-        {
-            hardRecipes();
-        } else
-        {
-            easyRecipes();
-        }
-    }
-
-    public static void hardRecipes()
-    {
-        GameRegistry.addRecipe(new ItemStack(airCompressor, 1), new Object[] {
-                " B ", "CIC", "PRP", 'B', Item.bucketEmpty, 'C',
-                RegisterItems.coralFragment, 'I', Item.diamond, 'P',
-                Block.pistonStickyBase, 'R', Block.blockRedstone });
-    }
-
-    public static void easyRecipes()
-    {
         GameRegistry.addRecipe(new ItemStack(airCompressor, 1), new Object[] {
                 " B ", "CIC", "PRP", 'B', Item.bucketEmpty, 'C',
                 RegisterItems.coralFragment, 'I', Item.ingotIron, 'P',

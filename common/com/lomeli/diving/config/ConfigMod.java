@@ -10,8 +10,6 @@ import com.lomeli.diving.thaumcraft.config.RegisterThaum;
 
 public class ConfigMod
 {
-    public static boolean hardcore;
-
     /**
      * Registered all the id(s) for all the items and other variables
      */
@@ -159,8 +157,6 @@ public class ConfigMod
                 "DivingGearOptions.cfg"));
 
         config.load();
-
-        hardcore = config.get("Options", "hardmode", false).getBoolean(false);
 
         DivingGear.capesOn = config.get("Options", "enable-capes", true)
                 .getBoolean(true);

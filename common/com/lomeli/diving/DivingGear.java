@@ -62,8 +62,8 @@ public class DivingGear
         RegisterBlocks.registerBlock();
 
         // Register Recipes.
-        // RegisterItems.registerRecipes();
-        // RegisterBlocks.registerRecipes();
+        RegisterItems.registerRecipes();
+        RegisterBlocks.registerRecipes();
 
         // Checking if Thaumcraft is installed.
         ThaumCraftSupport.isThaumInstalled();

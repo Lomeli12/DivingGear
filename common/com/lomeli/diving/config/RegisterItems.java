@@ -40,7 +40,7 @@ public class RegisterItems
                 0, ReferenceIntegers.snorkelUses,
                 ReferenceIntegers.snorkelAmount, "snorkel", "snorkelModel")
                 .setUnlocalizedName("Snorkel").setCreativeTab(
-                        DivingGear.divingGearTab);
+                DivingGear.divingGearTab);
         ADS_T = new ItemGear(ReferenceIntegers.ADS_TID, EnumArmorMaterial.IRON,
                 DivingGear.proxy.addArmor("Snorkel"), 0,
                 ReferenceIntegers.adsUses, ReferenceIntegers.adsAmount, "ads",
@@ -101,17 +101,6 @@ public class RegisterItems
 
     public static void registerRecipes()
     {
-        if (ConfigMod.hardcore == true)
-        {
-            hardRecipes();
-        } else
-        {
-            easyRecipes();
-        }
-    }
-
-    public static void easyRecipes()
-    {
         // Items
         GameRegistry.addRecipe(new ItemStack(airTank, 1), new Object[] { "IGI",
                 "IGI", "LIL", 'I', Item.ingotIron, 'G', Item.glassBottle, 'L',
@@ -142,42 +131,5 @@ public class RegisterItems
                 "C", "S", "S", 'C', coralFragment, 'S', Item.stick });
         GameRegistry.addRecipe(new ItemStack(coralSword, 1), new Object[] {
                 "C", "C", "S", 'C', coralFragment, 'S', Item.stick });
-    }
-
-    public static void hardRecipes()
-    {
-        // Items
-        GameRegistry.addRecipe(new ItemStack(airTank, 1), new Object[] { "IGI",
-                "IGI", "LIL", 'I', Item.ingotIron, 'G', Item.diamond, 'L',
-                new ItemStack(Item.dyePowder, 1, 4) });
-        GameRegistry.addRecipe(new ItemStack(doubleTank, 1), new Object[] {
-                "SIS", "TDT", "FFF", 'I', Item.ingotIron, 'S', Item.silk, 'T',
-                airTank, 'D', Item.diamond, 'F', Block.netherBrick });
-
-        // Diving Gear
-        GameRegistry.addRecipe(new ItemStack(Snorkel, 1), new Object[] { "IFI",
-                "GSG", "LTL", 'L', new ItemStack(Item.dyePowder, 1, 4), 'I',
-                Item.ingotIron, 'S', Item.silk, 'G', Block.thinGlass, 'T',
-                Item.glassBottle, 'F', Block.glowStone });
-        GameRegistry.addRecipe(new ItemStack(ADS_T, 1), new Object[] { "SVS",
-                "IGI", "SIS", 'I', Item.ingotIron, 'V', Block.cobblestoneMossy,
-                'G', Block.glass, 'S', Block.slowSand });
-        GameRegistry.addRecipe(new ItemStack(Scuba1, 1), new Object[] { "LIL",
-                "ITI", "RIR", 'L', Block.blockLapis, 'I', Item.ingotIron, 'R',
-                Item.bucketEmpty, 'T', airTank });
-        GameRegistry.addRecipe(new ItemStack(Scuba2, 1), new Object[] { "LIL",
-                "ITI", "RIR", 'L', Block.blockLapis, 'I', Item.ingotIron, 'R',
-                Item.bucketEmpty, 'T', doubleTank });
-
-        // Tools
-        GameRegistry.addRecipe(new ItemStack(coralPick, 1), new Object[] {
-                "CCC", "ISI", "ISI", 'C', coralFragment, 'S', Item.stick, 'I',
-                Item.ingotIron });
-        GameRegistry.addRecipe(new ItemStack(coralShovel, 1), new Object[] {
-                "ICI", "S", "S", 'C', coralFragment, 'S', Item.stick, 'I',
-                Item.ingotIron });
-        GameRegistry.addRecipe(new ItemStack(coralSword, 1), new Object[] {
-                "ICI", "ICI", "S", 'C', coralFragment, 'S', Item.stick, 'I',
-                Item.ingotIron });
     }
 }
