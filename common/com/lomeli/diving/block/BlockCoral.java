@@ -39,6 +39,12 @@ public class BlockCoral extends Block
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
+    
     @Override
     public boolean isOpaqueCube()
     {
