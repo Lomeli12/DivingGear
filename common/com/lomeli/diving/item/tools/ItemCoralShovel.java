@@ -27,9 +27,9 @@ public class ItemCoralShovel extends ItemSpade
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void updateIcons(IconRegister iconRegister)
+    public void registerIcons(IconRegister iconRegister)
     {
-        iconIndex = iconRegister.registerIcon(ReferenceStrings.modID
+        this.itemIcon = iconRegister.registerIcon(ReferenceStrings.modID
                 .toLowerCase() + ":shovelCoral");
     }
 

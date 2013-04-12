@@ -1,13 +1,13 @@
 package com.lomeli.diving.armor;
 
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IArmorTextureProvider;
 
 import com.lomeli.diving.config.RegisterItems;
 import com.lomeli.diving.lib.ReferenceStrings;
@@ -15,7 +15,7 @@ import com.lomeli.diving.lib.ReferenceStrings;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGear extends ItemArmor implements IArmorTextureProvider
+public class ItemGear extends ItemArmor
 {
     private int amount;
     private String texture;
@@ -34,15 +34,15 @@ public class ItemGear extends ItemArmor implements IArmorTextureProvider
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void updateIcons(IconRegister iconRegister)
+    public void registerIcons(IconRegister iconRegister)
     {
-        iconIndex = iconRegister.registerIcon(ReferenceStrings.modID
+        this.itemIcon = iconRegister.registerIcon(ReferenceStrings.modID
                 .toLowerCase() + ":" + texture);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public String getArmorTextureFile(ItemStack itemstack)
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
     {
         return "/mods/divinggear/textures/models/" + armorTexture + ".png";
     }
