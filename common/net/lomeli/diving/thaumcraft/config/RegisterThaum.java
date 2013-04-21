@@ -50,8 +50,8 @@ public class RegisterThaum
                 .setUnlocalizedName("thaumADS");
         LanguageRegistry.addName(thaumADS, thaumADS_Name);
 
-        thaumTank = new ItemDiving(ReferenceIntegers.thaumTankID, "visTank")
-                .setUnlocalizedName("thaumTank");
+        thaumTank = new ItemDiving(ReferenceIntegers.thaumTankID, "vistank")
+                .setUnlocalizedName("thaumTank").setCreativeTab(DivingGear.divingGearTab);
         LanguageRegistry.addName(thaumTank, thaumTankName);
 
         ThaumcraftApi.addArcaneCraftingRecipe("VISTANK", "VISTANK", 30,
