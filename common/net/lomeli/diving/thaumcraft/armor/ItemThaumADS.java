@@ -37,7 +37,7 @@ public class ItemThaumADS extends ItemArmor
     public void registerIcons(IconRegister iconRegister)
     {
         this.itemIcon = iconRegister.registerIcon(ReferenceStrings.modID
-                .toLowerCase() + ":thaumichelm.png");
+                .toLowerCase() + ":thaumichelm");
     }
 
     @Override

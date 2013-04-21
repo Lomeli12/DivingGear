@@ -44,7 +44,7 @@ public class ItemGear extends ItemArmor
     @SideOnly(Side.CLIENT)
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
     {
-        return "/mods/divinggear/textures/models/" + armorTexture + ".png";
+        return "/mods/divinggear/textures/models/" + armorTexture;
     }
 
     @Override

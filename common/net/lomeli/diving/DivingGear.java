@@ -67,7 +67,7 @@ public class DivingGear
 
         // Starting world Gen.
         GameRegistry.registerWorldGenerator(new CoralGen());
-
+        
         // Rendering stuff
         proxy.initRendering();
     }
@@ -77,6 +77,7 @@ public class DivingGear
     {
     	// Checking if Thaumcraft is installed.
         ThaumCraftSupport.isThaumInstalled();
+        
         // LogHelper.log(Level.INFO, "Testing 1...2...3...");
     }
 }

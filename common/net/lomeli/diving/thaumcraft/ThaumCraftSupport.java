@@ -12,7 +12,7 @@ public class ThaumCraftSupport
 {
     public static void isThaumInstalled()
     {
-        if (Loader.isModLoaded(null))
+        if (Loader.isModLoaded("Thaumcraft"))
         {
             try
             {

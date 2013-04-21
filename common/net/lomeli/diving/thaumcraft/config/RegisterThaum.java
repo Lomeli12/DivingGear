@@ -40,7 +40,7 @@ public class RegisterThaum
     public static ResearchItem visTank;
     public static ResearchItem aqualisHelm;
 
-    public static String research = "/com/lomeli/diving/thaumcraft/config/research/research.xml";
+    public static String research = "/net/lomeli/diving/thaumcraft/config/research/research.xml";
 
     public static void register()
     {
