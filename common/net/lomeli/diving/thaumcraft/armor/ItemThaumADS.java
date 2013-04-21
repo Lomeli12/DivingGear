@@ -3,6 +3,7 @@ package net.lomeli.diving.thaumcraft.armor;
 import net.lomeli.diving.DivingGear;
 import net.lomeli.diving.lib.ReferenceIntegers;
 import net.lomeli.diving.lib.ReferenceStrings;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +12,8 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import thaumcraft.api.AuraNode;
+
+import thaumcraft.api.aura.AuraNode;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;

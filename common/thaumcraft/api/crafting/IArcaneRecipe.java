@@ -6,11 +6,11 @@ import net.minecraft.item.ItemStack;
 
 public interface IArcaneRecipe
 {
-
+	
+	
     /**
      * Used to check if a recipe matches current crafting inventory
-     * 
-     * @param player
+     * @param player 
      */
     boolean matches(IInventory var1, EntityPlayer player);
 
@@ -25,8 +25,6 @@ public interface IArcaneRecipe
     int getRecipeSize();
 
     ItemStack getRecipeOutput();
-
     int getCost();
-
     String getKey();
 }

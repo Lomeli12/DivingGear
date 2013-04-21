@@ -65,9 +65,6 @@ public class DivingGear
         RegisterItems.registerRecipes();
         RegisterBlocks.registerRecipes();
 
-        // Checking if Thaumcraft is installed.
-        ThaumCraftSupport.isThaumInstalled();
-
         // Starting world Gen.
         GameRegistry.registerWorldGenerator(new CoralGen());
 
@@ -78,6 +75,8 @@ public class DivingGear
     @PostInit
     public void postLoad(FMLPostInitializationEvent event)
     {
+    	// Checking if Thaumcraft is installed.
+        ThaumCraftSupport.isThaumInstalled();
         // LogHelper.log(Level.INFO, "Testing 1...2...3...");
     }
 }

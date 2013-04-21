@@ -12,7 +12,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
 
-@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
 {
     /** Is the ItemStack that you get when craft the recipe. */
@@ -20,54 +19,48 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
 
     /** Is a List of ItemStack that composes the recipe. */
     public final List recipeItems;
-
+    
     public String key;
-
+    
     @Override
-    public String getKey()
-    {
-        return key;
-    }
-
+	public String getKey() {
+		return key;
+	}
+    
     public int cost;
-
+    
     public ObjectTags tags;
 
-    public ShapelessInfusionCraftingRecipes(String key,
-            ItemStack par1ItemStack, List par2List, int cost, ObjectTags tags)
+    public ShapelessInfusionCraftingRecipes(String key, ItemStack par1ItemStack, List par2List, int cost, ObjectTags tags)
     {
-        recipeOutput = par1ItemStack;
-        recipeItems = par2List;
+        this.recipeOutput = par1ItemStack;
+        this.recipeItems = par2List;
         this.key = key;
         this.cost = cost;
         this.tags = tags;
     }
 
-    @Override
     public ItemStack getRecipeOutput()
     {
-        return recipeOutput;
+        return this.recipeOutput;
     }
 
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    @Override
     public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
-        if (key.length() > 0
-                && !ThaumcraftApiHelper
-                        .isResearchComplete(player.username, key))
-            return false;
-
-        ArrayList var2 = new ArrayList(recipeItems);
+    	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
+    		return false;
+    	}
+    	
+        ArrayList var2 = new ArrayList(this.recipeItems);
 
         for (int var3 = 0; var3 < 3; ++var3)
         {
             for (int var4 = 0; var4 < 3; ++var4)
             {
-                ItemStack var5 = ThaumcraftApiHelper.getStackInRowAndColumn(
-                        par1InventoryCrafting, var4, var3);
+                ItemStack var5 = ThaumcraftApiHelper.getStackInRowAndColumn(par1InventoryCrafting, var4, var3);
 
                 if (var5 != null)
                 {
@@ -76,44 +69,36 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
 
                     while (var7.hasNext())
                     {
-                        ItemStack var8 = (ItemStack) var7.next();
+                        ItemStack var8 = (ItemStack)var7.next();
 
-                        if (var5.itemID == var8.itemID
-                                && (var8.getItemDamage() == -1 || var5
-                                        .getItemDamage() == var8
-                                        .getItemDamage()))
+                        if (var5.itemID == var8.itemID && (var8.getItemDamage() == -1 || var5.getItemDamage() == var8.getItemDamage()))
                         {
-                            boolean matches = true;
-                            if (var8.hasTagCompound())
-                            {
-                                NBTTagCompound tc = var8.getTagCompound();
-                                for (Object tag : tc.getTags().toArray())
-                                {
-                                    NBTBase base = (NBTBase) tag;
-                                    Class nc = NBTBase.newTag(base.getId(),
-                                            base.getName()).getClass();
-                                    if (!(var5.hasTagCompound() && nc.cast(
-                                            var5.getTagCompound().getTag(
-                                                    base.getName())).equals(
-                                            nc.cast(base))))
-                                    {
-                                        matches = false;
-                                        break;
-                                    }
-                                }
-                            }
-
-                            if (matches)
-                            {
-                                var6 = true;
-                                var2.remove(var8);
-                                break;
-                            }
+                        	boolean matches=true;
+                        	if (var8.hasTagCompound()) {
+                        		NBTTagCompound tc = var8.getTagCompound();
+                        		for (Object tag:tc.getTags().toArray()) {
+                        			NBTBase base = (NBTBase)tag;
+                        			Class nc = NBTBase.newTag(base.getId(), base.getName()).getClass();
+	                        		if (!(var5.hasTagCompound() && 
+	                        				nc.cast(var5.getTagCompound().getTag(base.getName())).equals(nc.cast(base)))) {
+	                        			matches=false;
+	                        			break;
+	                        		}
+                        		}
+                        	}
+                        	
+                        	if (matches) {
+                        		var6 = true;
+                        		var2.remove(var8);
+                        		break;
+                        	}
                         }
                     }
 
                     if (!var6)
+                    {
                         return false;
+                    }
                 }
             }
         }
@@ -124,31 +109,27 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Returns an Item that is the result of this recipe
      */
-    @Override
     public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
     {
-        return recipeOutput.copy();
+        return this.recipeOutput.copy();
     }
 
     /**
      * Returns the size of the recipe area
      */
-    @Override
     public int getRecipeSize()
     {
-        return recipeItems.size();
+        return this.recipeItems.size();
     }
 
     @Override
-    public int getCost()
-    {
-        return cost;
-    }
-
+	public int getCost() {
+		return cost;
+	}
+    
     @Override
-    public ObjectTags getTags()
-    {
-        return tags;
-    }
+	public ObjectTags getTags() {
+		return tags;
+	}
 
 }
