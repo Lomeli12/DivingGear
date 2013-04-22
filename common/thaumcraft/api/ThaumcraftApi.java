@@ -156,7 +156,7 @@ public class ThaumcraftApi {
 
         if (par2ArrayOfObj[var4] instanceof String[])
         {
-            String[] var7 = (String[])((String[])par2ArrayOfObj[var4++]);
+            String[] var7 = ((String[])par2ArrayOfObj[var4++]);
             String[] var8 = var7;
             var9 = var7.length;
 
@@ -300,7 +300,7 @@ public class ThaumcraftApi {
 
         if (par2ArrayOfObj[var4] instanceof String[])
         {
-            String[] var7 = (String[])((String[])par2ArrayOfObj[var4++]);
+            String[] var7 = ((String[])par2ArrayOfObj[var4++]);
             String[] var8 = var7;
             var9 = var7.length;
 

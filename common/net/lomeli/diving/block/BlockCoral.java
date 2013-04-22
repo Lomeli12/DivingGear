@@ -39,7 +39,8 @@ public class BlockCoral extends Block
         return true;
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public int getRenderBlockPass()
     {
         return 1;

@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import net.lomeli.diving.core.helper.LogHelper;
 import net.lomeli.diving.thaumcraft.config.RegisterThaum;
 
-
 import cpw.mods.fml.common.Loader;
 
 public class ThaumCraftSupport

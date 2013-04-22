@@ -36,7 +36,8 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
         this.cost = cost;
     }
 
-    public ItemStack getRecipeOutput()
+    @Override
+	public ItemStack getRecipeOutput()
     {
         return this.recipeOutput;
     }
@@ -44,7 +45,8 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
+    @Override
+	public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
     	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
     		return false;
@@ -105,7 +107,8 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Returns an Item that is the result of this recipe
      */
-    public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
+    @Override
+	public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
     {
         return this.recipeOutput.copy();
     }
@@ -113,7 +116,8 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Returns the size of the recipe area
      */
-    public int getRecipeSize()
+    @Override
+	public int getRecipeSize()
     {
         return this.recipeItems.size();
     }

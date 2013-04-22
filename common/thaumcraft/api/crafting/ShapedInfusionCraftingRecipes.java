@@ -48,7 +48,8 @@ public class ShapedInfusionCraftingRecipes implements IInfusionRecipe
         this.tags = tags;
     }
 
-    public ItemStack getRecipeOutput()
+    @Override
+	public ItemStack getRecipeOutput()
     {
         return this.recipeOutput;
     }
@@ -56,7 +57,8 @@ public class ShapedInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
+    @Override
+	public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
     	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
     		return false;
@@ -145,7 +147,8 @@ public class ShapedInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Returns an Item that is the result of this recipe
      */
-    public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
+    @Override
+	public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
     {
         return new ItemStack(this.recipeOutput.itemID, this.recipeOutput.stackSize, this.recipeOutput.getItemDamage());
     }
@@ -153,7 +156,8 @@ public class ShapedInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Returns the size of the recipe area
      */
-    public int getRecipeSize()
+    @Override
+	public int getRecipeSize()
     {
         return this.recipeWidth * this.recipeHeight;
     }
