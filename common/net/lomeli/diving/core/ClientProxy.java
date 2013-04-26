@@ -29,7 +29,13 @@ public class ClientProxy extends CommonProxy
                 new TileEntityCoralRenderer());
         MinecraftForgeClient.registerItemRenderer(RegisterBlocks.coral.blockID,
                 new ItemCoralRenderer());
-        renderCapes(DivingGear.capesOn);
+        try
+        {
+        	renderCapes(DivingGear.capesOn);
+        }catch(Exception e)
+        {
+        	LogHelper.log(Level.SEVERE, "Could not load capes.");
+        }
     }
 
     @Override

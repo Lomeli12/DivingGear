@@ -5,6 +5,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApiHelper;
 
 public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
@@ -39,8 +40,7 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
         this.cost = cost;
     }
 
-    @Override
-	public ItemStack getRecipeOutput()
+    public ItemStack getRecipeOutput()
     {
         return this.recipeOutput;
     }
@@ -48,8 +48,7 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    @Override
-	public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
+    public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
     	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
     		return false;
@@ -115,7 +114,7 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
                         return false;
                     }
 
-                    if (var9.getItemDamage() != -1 && var9.getItemDamage() != var10.getItemDamage())
+                    if (var9.getItemDamage() != OreDictionary.WILDCARD_VALUE && var9.getItemDamage() != var10.getItemDamage())
                     {
                         return false;
                     }
@@ -143,8 +142,7 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Returns an Item that is the result of this recipe
      */
-    @Override
-	public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
+    public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
     {
         return new ItemStack(this.recipeOutput.itemID, this.recipeOutput.stackSize, this.recipeOutput.getItemDamage());
     }
@@ -152,8 +150,7 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Returns the size of the recipe area
      */
-    @Override
-	public int getRecipeSize()
+    public int getRecipeSize()
     {
         return this.recipeWidth * this.recipeHeight;
     }

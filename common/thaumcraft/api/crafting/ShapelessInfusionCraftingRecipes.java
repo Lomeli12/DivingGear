@@ -9,6 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
 
@@ -40,8 +41,7 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
         this.tags = tags;
     }
 
-    @Override
-	public ItemStack getRecipeOutput()
+    public ItemStack getRecipeOutput()
     {
         return this.recipeOutput;
     }
@@ -49,8 +49,7 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    @Override
-	public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
+    public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
     	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
     		return false;
@@ -73,7 +72,7 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
                     {
                         ItemStack var8 = (ItemStack)var7.next();
 
-                        if (var5.itemID == var8.itemID && (var8.getItemDamage() == -1 || var5.getItemDamage() == var8.getItemDamage()))
+                        if (var5.itemID == var8.itemID && (var8.getItemDamage() == OreDictionary.WILDCARD_VALUE || var5.getItemDamage() == var8.getItemDamage()))
                         {
                         	boolean matches=true;
                         	if (var8.hasTagCompound()) {
@@ -111,8 +110,7 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Returns an Item that is the result of this recipe
      */
-    @Override
-	public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
+    public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
     {
         return this.recipeOutput.copy();
     }
@@ -120,8 +118,7 @@ public class ShapelessInfusionCraftingRecipes implements IInfusionRecipe
     /**
      * Returns the size of the recipe area
      */
-    @Override
-	public int getRecipeSize()
+    public int getRecipeSize()
     {
         return this.recipeItems.size();
     }

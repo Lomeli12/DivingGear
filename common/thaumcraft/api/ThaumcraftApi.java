@@ -28,6 +28,8 @@ import thaumcraft.api.crafting.ShapelessInfusionCraftingRecipes;
 import thaumcraft.api.research.IScanEventHandler;
 import thaumcraft.api.research.ResearchList;
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 
 /**
@@ -156,7 +158,7 @@ public class ThaumcraftApi {
 
         if (par2ArrayOfObj[var4] instanceof String[])
         {
-            String[] var7 = ((String[])par2ArrayOfObj[var4++]);
+            String[] var7 = (String[])((String[])par2ArrayOfObj[var4++]);
             String[] var8 = var7;
             var9 = var7.length;
 
@@ -300,7 +302,7 @@ public class ThaumcraftApi {
 
         if (par2ArrayOfObj[var4] instanceof String[])
         {
-            String[] var7 = ((String[])par2ArrayOfObj[var4++]);
+            String[] var7 = (String[])((String[])par2ArrayOfObj[var4++]);
             String[] var8 = var7;
             var9 = var7.length;
 
@@ -776,6 +778,25 @@ public class ThaumcraftApi {
 	
 	//CROPS //////////////////////////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * To define mod crops you need to use FMLInterModComms in your @Mod.Init method.
+	 * There are two 'types' of crops you can add. Standard crops and clickable crops.
+	 * 
+	 * Standard crops work like normal vanilla crops - they grow until a certain metadata 
+	 * value is reached and you harvest them by destroying the block and collecting the blocks.
+	 * You need to create and ItemStack that tells the golem what block id and metadata represents
+	 * the crop when fully grown.
+	 * Example for vanilla wheat: 
+	 * FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(Block.crops,1,7));
+	 *  
+	 * Clickable crops are crops that you right click to gather their bounty instead of destroying them.
+	 * As for standard crops, you need to create and ItemStack that tells the golem what block id 
+	 * and metadata represents the crop when fully grown. The golem will trigger the blocks onBlockActivated method.
+	 * Example (this will technically do nothing since clicking wheat does nothing, but you get the idea): 
+	 * FMLInterModComms.sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(Block.crops,1,7));
+	 */
+	
+	@Deprecated
 	public static HashMap<Integer,Integer> crops = new HashMap<Integer,Integer>();
 	
 	/**
@@ -787,6 +808,7 @@ public class ThaumcraftApi {
 	 * @param grownMeta the metadata value when the crop is considered fully grown. 
 	 * The block with this id and meta will be the one the golem breaks.
 	 */
+	@Deprecated
 	public static void addHarvestableCrop(int blockID, int grownMeta) {
 		crops.put(blockID, grownMeta);
 	}

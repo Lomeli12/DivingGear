@@ -9,6 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApiHelper;
 
 public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
@@ -36,8 +37,7 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
         this.cost = cost;
     }
 
-    @Override
-	public ItemStack getRecipeOutput()
+    public ItemStack getRecipeOutput()
     {
         return this.recipeOutput;
     }
@@ -45,8 +45,7 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    @Override
-	public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
+    public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
     	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
     		return false;
@@ -69,7 +68,7 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
                     {
                         ItemStack var8 = (ItemStack)var7.next();
 
-                        if (var5.itemID == var8.itemID && (var8.getItemDamage() == -1 || var5.getItemDamage() == var8.getItemDamage()))
+                        if (var5.itemID == var8.itemID && (var8.getItemDamage() == OreDictionary.WILDCARD_VALUE || var5.getItemDamage() == var8.getItemDamage()))
                         {
                         	boolean matches=true;
                         	if (var8.hasTagCompound()) {
@@ -107,8 +106,7 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Returns an Item that is the result of this recipe
      */
-    @Override
-	public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
+    public ItemStack getCraftingResult(IInventory par1InventoryCrafting)
     {
         return this.recipeOutput.copy();
     }
@@ -116,8 +114,7 @@ public class ShapelessArcaneCraftingRecipes implements IArcaneRecipe
     /**
      * Returns the size of the recipe area
      */
-    @Override
-	public int getRecipeSize()
+    public int getRecipeSize()
     {
         return this.recipeItems.size();
     }
