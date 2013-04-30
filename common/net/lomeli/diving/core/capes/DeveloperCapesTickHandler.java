@@ -10,7 +10,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ImageBufferDownload;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -80,7 +79,7 @@ public class DeveloperCapesTickHandler implements ITickHandler
                                 // the right dimensions.
                                 mc.renderEngine.obtainImageData(
                                         player.cloakUrl,
-                                        new ImageBufferDownload());
+                                        new DeveloperCapesImageBufferDownload());
                             }
                         }
                     }
