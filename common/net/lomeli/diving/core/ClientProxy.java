@@ -2,16 +2,19 @@ package net.lomeli.diving.core;
 
 import java.util.logging.Level;
 
+import com.jadarstudios.api.developercapesapi.DeveloperCapesAPI;
+
 import net.lomeli.diving.DivingGear;
 import net.lomeli.diving.client.render.item.ItemCoralRenderer;
 import net.lomeli.diving.config.RegisterBlocks;
-import net.lomeli.diving.core.capes.DeveloperCapesAPI;
 import net.lomeli.diving.core.helper.LogHelper;
 import net.lomeli.diving.lib.RenderIDs;
+import net.lomeli.diving.tileentity.TileEntityAirCompressor;
+import net.lomeli.diving.tileentity.TileEntityAirCompressorRenderer;
 import net.lomeli.diving.tileentity.TileEntityCoral;
 import net.lomeli.diving.tileentity.TileEntityCoralRenderer;
-import net.minecraftforge.client.MinecraftForgeClient;
 
+import net.minecraftforge.client.MinecraftForgeClient;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -25,10 +28,15 @@ public class ClientProxy extends CommonProxy
         
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoral.class,
                 new TileEntityCoralRenderer());
-        ClientRegistry.registerTileEntity(TileEntityCoral.class, "coral",
-                new TileEntityCoralRenderer());
+        
         MinecraftForgeClient.registerItemRenderer(RegisterBlocks.coral.blockID,
                 new ItemCoralRenderer());
+        
+        ClientRegistry.registerTileEntity(TileEntityCoral.class, "coral",
+                new TileEntityCoralRenderer());
+        ClientRegistry.registerTileEntity(TileEntityAirCompressor.class, 
+        		"airCompressor", new TileEntityAirCompressorRenderer());
+        
         try
         {
         	renderCapes(DivingGear.capesOn);
@@ -59,8 +67,6 @@ public class ClientProxy extends CommonProxy
                 LogHelper.log(Level.WARNING, "Capes failed to load!");
             }
 
-        } else
-        {
         }
     }
 }
