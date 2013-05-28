@@ -2,9 +2,8 @@ package net.lomeli.diving.config;
 
 import net.lomeli.diving.DivingGear;
 import net.lomeli.diving.armor.ItemGear;
-import net.lomeli.diving.item.ItemAirTankFull;
+import net.lomeli.diving.item.ItemAirTank;
 import net.lomeli.diving.item.ItemDiving;
-import net.lomeli.diving.item.ItemDoubleAirTankFull;
 import net.lomeli.diving.item.tools.ItemCoralPickaxe;
 import net.lomeli.diving.item.tools.ItemCoralShovel;
 import net.lomeli.diving.item.tools.ItemCoralSword;
@@ -67,10 +66,10 @@ public class RegisterItems
 
     public static void registerItems()
     {
-        airTank = new ItemAirTankFull(ReferenceIntegers.airTankID)
+        airTank = new ItemAirTank(ReferenceIntegers.airTankID, "airtank", 150)
                 .setUnlocalizedName("AirTank").setCreativeTab(
                         DivingGear.divingGearTab);
-        doubleTank = new ItemDoubleAirTankFull(ReferenceIntegers.doubleTankID)
+        doubleTank = new ItemAirTank(ReferenceIntegers.doubleTankID, "double", 300)
                 .setUnlocalizedName("DoubleTank").setCreativeTab(
                         DivingGear.divingGearTab);
         coralFragment = new ItemDiving(ReferenceIntegers.coralFragmentID,
