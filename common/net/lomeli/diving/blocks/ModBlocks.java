@@ -23,6 +23,12 @@ public class ModBlocks
 	
 	public static void loadBlocks()
 	{
+		waterMill = new BlockWaterMill(ItemIDs.waterMillID).setUnlocalizedName("watermill");
+		
+		GameRegistry.registerBlock(waterMill, "Water Mill");
+		
+		LanguageRegistry.addName(waterMill, "Water Mill");
+		
 		coral = new BlockCoral(ItemIDs.coralID, "coral");
 		
 		GameRegistry.registerBlock(coral, ItemCoral.class, "Coral");

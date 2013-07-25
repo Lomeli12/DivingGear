@@ -92,20 +92,23 @@ public class BlockCoral extends Block
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) 
 	{
-		return BlockUtil.isBlockInWater(world, x, y, z);
+		if(BlockUtil.isBlockAdjacentToWater(world, x, y, z) || world.getBlockId(x, y-1, z) != ModBlocks.coral.blockID)
+			return true;
+		else 
+			return false;
 	}
 	
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) 
 	{
-		if(BlockUtil.isBlockInWater(world, x, y, z))
+		if(BlockUtil.isBlockAdjacentToWater(world, x, y, z))
 			this.dropBlockAsItem_do(world, x, y, z,new ItemStack(ModBlocks.coral, 1, meta));
 	}
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, int neighborBlockID)
 	{
-		if(!BlockUtil.isBlockInWater(world, x, y, z))
+		if(!BlockUtil.isBlockAdjacentToWater(world, x, y, z))
 		{
 			this.dropBlockAsItem_do(world, x, y, z, new ItemStack(ModBlocks.coral, 1, world.getBlockMetadata(x, y, z)));
 			world.setBlockToAir(x, y, z);

@@ -16,4 +16,5 @@ public class ModInts
 	public static int visTankY;
 	public static int aqualisX;
 	public static int aqualisY;
+	public static int ticks;
 }

@@ -2,6 +2,7 @@ package net.lomeli.diving.core;
 
 import java.io.File;
 
+import net.lomeli.diving.DivingGear;
 import net.lomeli.diving.lib.ItemIDs;
 import net.lomeli.diving.lib.ModInts;
 import net.lomeli.diving.lib.ModStrings;
@@ -10,7 +11,6 @@ import net.minecraftforge.common.Configuration;
 
 public class Config
 {
-	
 	private static String defaultCat = "Configurations";
 	private static String itemID = "Item IDs";
 	private static String gearID = "Gear IDs";
@@ -72,6 +72,10 @@ public class Config
 		ModInts.visTankY = config.get(defaultCat, "visTankY", 3, ModStrings.VISY_DESC).getInt(3);
 		ModInts.aqualisX = config.get(defaultCat, "aquaX", -7, ModStrings.AQUAX_DESC).getInt(-7);
 		ModInts.aqualisY = config.get(defaultCat, "aquaY", 3, ModStrings.AQUAY_DESC).getInt(3);
+		ModInts.ticks	= config.get(defaultCat, "ticks", 40, ModStrings.TICK_DESC).getInt(40);
+		
+		DivingGear.checkForUpdates = config.get(defaultCat, "checkforupdates", true,
+			ModStrings.UPDATE_DESC).getBoolean(true);
 		
 		config.save();
 	}
