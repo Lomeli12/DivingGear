@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <project name="Diving Gear Mod">
 	<property file="build.properties"/>
+    <property file="build_number.properties" prefix="build_number"/>
 	
 	<target name="clean">
 		<delete file="${dir.development}\forge\mcp\src\minecraft\mcmod.info" />
@@ -20,6 +21,8 @@
 	<target name="build">
 		<copy todir="${dir.development}\forge\mcp\src\minecraft">
 			<fileset dir="${dir.development}\source\${dir.modname}\common" />
+            <fileset dir="${dir.development}\source\${dir.modname}\dependencies" />
+            <fileset dir="${dir.development}\source\LomLib\common" />
 		</copy>
 		<replace dir="${dir.development}\forge\mcp\src\minecraft" token="@VERSION@" value="${release.mod.version}" />
 	</target>
@@ -74,8 +77,12 @@
 		<mkdir dir="..\..\${dir.release}\${dir.modname}\${release.minecraft.version}\${release.mod.version}" />
 		<jar destfile="..\..\${dir.release}\${dir.modname}\${release.minecraft.version}\${release.mod.version}\${release.mod.name}-universal-${release.mod.version}-build-${build_number.build_number}.jar">
 			<fileset dir="${dir.development}\forge\mcp\src\minecraft\" includes="mcmod.info" />
-			<fileset dir="${dir.development}\forge\mcp\reobf\minecraft" excludes="**/lomlib/**" />
-			<fileset dir="${dir.development}\source\${dir.modname}\resources"excludes="**/xcf/**"  />
+			<fileset dir="${dir.development}\forge\mcp\reobf\minecraft">
+                <exclude name="**/lomlib/**" />
+                <exclude name="**/minecraft**" />
+                <exclude name="com/**" />
+            </fileset>
+			<fileset dir="${dir.development}\source\${dir.modname}\resources" excludes="**/xcf/**" />
 		</jar>
 		
 		<!-- Clean up the MCP source now that we are done -->
