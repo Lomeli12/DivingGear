@@ -79,7 +79,7 @@
 			<fileset dir="${dir.development}\forge\mcp\src\minecraft\" includes="mcmod.info" />
 			<fileset dir="${dir.development}\forge\mcp\reobf\minecraft">
                 <exclude name="**/lomlib/**" />
-                <exclude name="**/minecraft**" />
+                <exclude name="**/minecraft/**" />
                 <exclude name="com/**" />
             </fileset>
 			<fileset dir="${dir.development}\source\${dir.modname}\resources" excludes="**/xcf/**" />

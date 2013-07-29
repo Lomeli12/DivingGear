@@ -7,10 +7,12 @@ import buildcraft.api.power.PowerHandler.PowerReceiver;
 import buildcraft.api.power.PowerHandler.Type;
 
 import net.lomeli.diving.lib.ModInts;
+
 import net.lomeli.lomlib.block.BlockUtil;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import net.minecraftforge.common.ForgeDirection;
 
 public class TileEntityWaterMill extends TileEntity 
@@ -41,6 +43,16 @@ public class TileEntityWaterMill extends TileEntity
 		return BlockUtil.isBlockAdjacentToWaterSource(worldObj, xCoord, yCoord, zCoord);
 	}
 	
+	public float addEnergy(float amount)
+	{
+		System.out.println((powerHandler.getEnergyStored() + amount));
+		powerHandler.setEnergy(powerHandler.getEnergyStored() + amount);
+		if(powerHandler.getEnergyStored() > powerHandler.getMaxEnergyStored())
+			powerHandler.setEnergy(powerHandler.getMaxEnergyStored());
+		
+		return amount;
+	}
+	
 	@Override
     public void updateEntity()
     {
@@ -49,19 +61,21 @@ public class TileEntityWaterMill extends TileEntity
 		{
 			if(isActive())
 			{
-				worldObj.setBlockMetadataWithNotify(xCoord-1, xCoord, zCoord, 1, 2);
+				worldObj.setBlockMetadataWithNotify(xCoord, xCoord, zCoord, 1, 2);
 				tick++;
 				if(tick >= ModInts.ticks)
 				{
-					if(powerHandler != null)
-						powerHandler.addEnergy(8F);
+					try{
+						addEnergy(8F);
+					}catch(Exception e){}
+					
 					tick = 0;
 				}
 			}
 			else
 			{
 				tick = 0;
-				this.worldObj.setBlockMetadataWithNotify(xCoord, xCoord, zCoord, 0, 2);
+				worldObj.setBlockMetadataWithNotify(xCoord, xCoord, zCoord, 0, 2);
 			}
 		}
     }

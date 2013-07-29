@@ -4,6 +4,8 @@ import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 
+import net.lomeli.diving.items.ItemTanks;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -21,12 +23,45 @@ public class TileEntityAirCompressor extends TileEntity
 	
 	private PowerHandler powerHandler;
 	
+	private int tick;
+	
 	public TileEntityAirCompressor()
 	{
 		powerHandler = new PowerHandler(this, PowerHandler.Type.MACHINE);
 		initPowerProvider();
 		inventory = new ItemStack[2];
 	}
+	
+	private boolean isActive(){
+		return powerHandler.getEnergyStored() > 16F;
+	}
+	
+	@Override
+    public void updateEntity()
+    {
+		super.updateEntity();
+		if(!this.worldObj.isRemote)
+		{
+			if(isActive())
+			{
+				if(getStackInSlot(0) != null && getStackInSlot(0).getItem() instanceof ItemTanks)
+				{
+					if(getStackInSlot(0).getItemDamage() >= 0)
+					{
+						tick++;
+						if(tick >= 10)
+						{
+							getStackInSlot(0).damageItem(-2, null);
+							powerHandler.useEnergy(3F, 5F, false);
+							tick = 0;
+						}
+					}
+				}
+			}
+			else
+				tick = 0;
+		}
+    }
 	
 	private void initPowerProvider() 
 	{

@@ -7,13 +7,13 @@ import net.lomeli.diving.tileentity.TileEntityWaterMill;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockWaterMill extends BlockContainer
 {
-	
 	public Icon[] iconArray;
 	
 	public BlockWaterMill(int par1)
@@ -21,6 +21,29 @@ public class BlockWaterMill extends BlockContainer
 	    super(par1, Material.anvil);
 	    this.setCreativeTab(DivingGear.modTab);
 	    this.setResistance(15F);
+    }
+	
+	@Override
+    public boolean onBlockActivated(World world, int x, int y, int z,
+            EntityPlayer player, int i, float f, float g, float t)
+    {
+        if (player.isSneaking())
+            return false;
+        else
+        {
+            if (!world.isRemote)
+            {
+            	TileEntityWaterMill tile = (TileEntityWaterMill)world.getBlockTileEntity(x, y, z);
+            	if(tile != null)
+            	{
+            		if(tile.isActive())
+            			player.addChatMessage(tile.getCurrentPower() +" MJ");
+            		else
+            			player.addChatMessage("Needs to be in water.");
+            	}
+            }
+            return true;
+        }
     }
 
 	@Override
