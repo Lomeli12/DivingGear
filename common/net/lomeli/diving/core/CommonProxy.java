@@ -5,4 +5,6 @@ public class CommonProxy
 	public void registerTileEntities(){}
 	
 	public void registerTickHandler(){}
+	
+	public void registerKeyHandler(){}
 }

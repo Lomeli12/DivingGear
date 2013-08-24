@@ -1,6 +1,7 @@
 package net.lomeli.diving.client.gui.slot;
 
-import net.lomeli.diving.items.ModItems;
+import net.lomeli.diving.items.IAirTanks;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,7 @@ public class SlotDualTank extends Slot
 	@Override
     public boolean isItemValid(ItemStack itemStack)
 	{
-		if(itemStack.itemID == ModItems.airTank.itemID)
+		if(itemStack.getItem() instanceof IAirTanks)
 			return true;
 		else
 			return false;

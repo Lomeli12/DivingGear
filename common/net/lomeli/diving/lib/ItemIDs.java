@@ -13,6 +13,7 @@ public class ItemIDs
 	public static int visTankID;
 	public static int woodenGearID;
 	public static int sturdyCoralID;
+	public static int filterID;
 	
 	//Tools
 	public static int coralPick;

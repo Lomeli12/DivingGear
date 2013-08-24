@@ -6,6 +6,8 @@ public class ModInts
 	public static final int MINOR = 0;
 	public static final int REVISION = 0;
 	
+	public static int keyCode;
+	
 	public static int snorkelAir;
 	public static int snorkelUses;
 	public static int airTankUses;

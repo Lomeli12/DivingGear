@@ -1,5 +1,6 @@
 package net.lomeli.diving.core;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import net.lomeli.diving.DivingGear;
@@ -46,6 +47,7 @@ public class Config
 		ItemIDs.coralSword = config.get(itemID, "coralSword", 6067).getInt(6067);
 		ItemIDs.coralAxe = config.get(itemID, "coralAxe", 6068).getInt(6068);
 		ItemIDs.coralHoe = config.get(itemID, "coralHoe", 6069).getInt(6069);
+		ItemIDs.filterID = config.get(itemID, "filter", 6070).getInt(6070);
 		
 		//Blocks
 		ItemIDs.coralID = config.get(blockID, "coral", 600).getInt(600);
@@ -61,6 +63,9 @@ public class Config
 		
 		config.load();
 		
+		ModInts.keyCode = config.get(defaultCat, "gearGUIKeyCode", KeyEvent.VK_BACK_SLASH)
+			.getInt(KeyEvent.VK_BACK_SLASH);
+		
 		ModInts.snorkelAir = config.get(defaultCat, "snorkelAir", 150, ModStrings.SNORKELAIR_DESC).getInt(150);
 		ModInts.snorkelUses = config.get(defaultCat, "snorkelUses", 1, ModStrings.SNORKELUSES_DESC).getInt(1);
 		ModInts.airTankUses = config.get(defaultCat, "airTankUses", 1, ModStrings.AIRTANK_DESC).getInt(1);
@@ -72,7 +77,7 @@ public class Config
 		ModInts.visTankY = config.get(defaultCat, "visTankY", 3, ModStrings.VISY_DESC).getInt(3);
 		ModInts.aqualisX = config.get(defaultCat, "aquaX", -7, ModStrings.AQUAX_DESC).getInt(-7);
 		ModInts.aqualisY = config.get(defaultCat, "aquaY", 3, ModStrings.AQUAY_DESC).getInt(3);
-		ModInts.ticks	= config.get(defaultCat, "ticks", 40, ModStrings.TICK_DESC).getInt(40);
+		ModInts.ticks	= config.get(defaultCat, "ticks", 100, ModStrings.TICK_DESC).getInt(100);
 		
 		DivingGear.checkForUpdates = config.get(defaultCat, "checkforupdates", true,
 			ModStrings.UPDATE_DESC).getBoolean(true);

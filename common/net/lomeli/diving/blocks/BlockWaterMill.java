@@ -21,6 +21,7 @@ public class BlockWaterMill extends BlockContainer
 	    super(par1, Material.anvil);
 	    this.setCreativeTab(DivingGear.modTab);
 	    this.setResistance(15F);
+	    this.setHardness(3F);
     }
 	
 	@Override

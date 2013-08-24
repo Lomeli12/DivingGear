@@ -10,6 +10,11 @@ import net.lomeli.diving.lib.ModInts;
 
 import net.lomeli.lomlib.block.BlockUtil;
 
+import net.minecraft.block.Block;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -22,71 +27,114 @@ public class TileEntityWaterMill extends TileEntity
 	
 	private int tick;
 	
-	public TileEntityWaterMill()
-	{
+	public TileEntityWaterMill(){
 		powerHandler = new PowerHandler(this, Type.ENGINE);
 		initPowerHandler();
 	}
 
-	private void initPowerHandler()
-	{
-		try
-		{
-			if(powerHandler != null)
-			{
-				powerHandler.configurePowerPerdition(1, 100);
-			}
-		}catch(Exception e){}
+	private void initPowerHandler(){
+		if(powerHandler != null){
+				powerHandler.configurePowerPerdition(0, 0);
+				powerHandler.configure(8F, 16F, 2F, 400F);
+		}
 	}
 	
 	public boolean isActive(){
-		return BlockUtil.isBlockAdjacentToWaterSource(worldObj, xCoord, yCoord, zCoord);
+		int j = 0;
+		if(BlockUtil.isBlockAdjacentToWaterSource(worldObj, xCoord, yCoord, zCoord)){
+			if(this.worldObj.getBlockId(xCoord, yCoord, zCoord - 1) == Block.waterStill.blockID)
+				j++;
+			if(this.worldObj.getBlockId(xCoord, yCoord, zCoord + 1) == Block.waterStill.blockID)
+				j++;
+			if(this.worldObj.getBlockId(xCoord + 1, yCoord, zCoord) == Block.waterStill.blockID)
+				j++;
+			if(this.worldObj.getBlockId(xCoord - 1, yCoord, zCoord) == Block.waterStill.blockID)
+				j++;
+		}
+		
+		return j > 1;
 	}
 	
-	public float addEnergy(float amount)
-	{
-		System.out.println((powerHandler.getEnergyStored() + amount));
-		powerHandler.setEnergy(powerHandler.getEnergyStored() + amount);
-		if(powerHandler.getEnergyStored() > powerHandler.getMaxEnergyStored())
-			powerHandler.setEnergy(powerHandler.getMaxEnergyStored());
-		
-		return amount;
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound){
+		super.readFromNBT(par1NBTTagCompound);
+		this.loadNBT(par1NBTTagCompound);
+    }
+	
+	public void loadNBT(NBTTagCompound nbtTag){
+		this.powerHandler.readFromNBT(nbtTag);
+	}
+	
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
+		super.writeToNBT(par1NBTTagCompound);
+		this.addToNBT(par1NBTTagCompound);
+	}
+	
+	public void addToNBT(NBTTagCompound nbtTag){
+		this.powerHandler.writeToNBT(nbtTag);
 	}
 	
 	@Override
-    public void updateEntity()
-    {
+	public Packet getDescriptionPacket(){
+		Packet132TileEntityData packet = (Packet132TileEntityData)super.getDescriptionPacket();
+		NBTTagCompound tag = packet != null ? packet.customParam1 : new NBTTagCompound();
+		this.addToNBT(tag);
+		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 1, tag);
+	}
+	
+	@Override
+	public void onDataPacket(INetworkManager networkManager, Packet132TileEntityData packet){
+		super.onDataPacket(networkManager, packet);
+		NBTTagCompound nbtTag = packet.customParam1;
+		this.loadNBT(nbtTag);
+	}
+	
+	@Override
+    public void updateEntity(){
 		super.updateEntity();
-		if(!this.worldObj.isRemote)
-		{
-			if(isActive())
-			{
-				worldObj.setBlockMetadataWithNotify(xCoord, xCoord, zCoord, 1, 2);
+		if(!this.worldObj.isRemote){
+			sendPower();
+			if(isActive()){
+				this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 2);
+				this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				tick++;
-				if(tick >= ModInts.ticks)
-				{
-					try{
-						addEnergy(8F);
-					}catch(Exception e){}
-					
+				if(tick >= ModInts.ticks){
+					this.powerHandler.setEnergy(this.powerHandler.getEnergyStored() + 8F);
 					tick = 0;
 				}
 			}
-			else
-			{
+			else{
 				tick = 0;
-				worldObj.setBlockMetadataWithNotify(xCoord, xCoord, zCoord, 0, 2);
+				this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 2);
+				this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}
 		}
     }
+	
+	public void sendPower(){
+		TileEntity tile = this.worldObj.getBlockTileEntity(xCoord, yCoord + 1, zCoord);
+		if(tile != null){
+			PowerReceiver receptor = ((IPowerReceptor) tile).getPowerReceiver(ForgeDirection.DOWN);
+			if(receptor != null){
+				float extracted = getPowerToExtract(receptor);
+				if(extracted > 0F && this.powerHandler.getEnergyStored() >= extracted){
+					receptor.receiveEnergy(Type.ENGINE, extracted, ForgeDirection.DOWN);
+					this.powerHandler.useEnergy(extracted, extracted, false);
+				}
+			}
+			
+		}
+	}
+	
+	public float getPowerToExtract(PowerReceiver receptor){
+		return receptor.getMinEnergyReceived() + receptor.getMaxEnergyReceived() / 2;
+	}
 	
 	public float getCurrentPower(){
 		return powerHandler.getEnergyStored();
 	}
 	
-	@Override
     public boolean canEmitPowerFrom(ForgeDirection side){
-	    return true;
+	    return side == ForgeDirection.UP;
     }
 
 	@Override
@@ -95,7 +143,8 @@ public class TileEntityWaterMill extends TileEntity
     }
 
 	@Override
-    public void doWork(PowerHandler workProvider){}
+    public void doWork(PowerHandler workProvider)
+	{}
 
 	@Override
     public World getWorld(){

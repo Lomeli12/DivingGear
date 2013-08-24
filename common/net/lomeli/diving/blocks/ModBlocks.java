@@ -24,10 +24,13 @@ public class ModBlocks
 	public static void loadBlocks()
 	{
 		waterMill = new BlockWaterMill(ItemIDs.waterMillID).setUnlocalizedName("watermill");
+		airCompressor = new BlockAirCompressor(ItemIDs.airCompressorID).setUnlocalizedName("airCompressor");
 		
 		GameRegistry.registerBlock(waterMill, "Water Mill");
+		GameRegistry.registerBlock(airCompressor, "Air Compressor");
 		
 		LanguageRegistry.addName(waterMill, "Water Mill");
+		LanguageRegistry.addName(airCompressor, "Air Compressor");
 		
 		coral = new BlockCoral(ItemIDs.coralID, "coral");
 		
