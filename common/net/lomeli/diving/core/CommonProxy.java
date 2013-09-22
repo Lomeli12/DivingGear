@@ -1,10 +1,12 @@
 package net.lomeli.diving.core;
 
-public class CommonProxy
-{
-	public void registerTileEntities(){}
-	
-	public void registerTickHandler(){}
-	
-	public void registerKeyHandler(){}
+public class CommonProxy {
+    public void registerTileEntities() {
+    }
+
+    public void registerTickHandler() {
+    }
+
+    public void registerKeyHandler() {
+    }
 }

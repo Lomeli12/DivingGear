@@ -23,57 +23,54 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = ModStrings.MOD_ID, name = ModStrings.MOD_NAME, version = ModStrings.VERSION,
-	dependencies="required-after:LomLib@[1.0.2,)")
+@Mod(modid = ModStrings.MOD_ID, name = ModStrings.MOD_NAME, version = ModStrings.VERSION, dependencies = "required-after:LomLib@[1.0.2,)")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-public class DivingGear
-{
-	public static boolean checkForUpdates;
-	
-	@Mod.Instance(ModStrings.MOD_ID)
-	public static DivingGear instance;
-	
-	@SidedProxy(clientSide = ModStrings.CLIENT, serverSide = ModStrings.COMMON)
-	public static CommonProxy proxy;
-	
-	public static CreativeTabs modTab = new CreativeTabDG(CreativeTabs.getNextID(), ModStrings.MOD_NAME);
-	
-	public static UpdateHelper updater = new UpdateHelper();
-	
-	@Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-		Config.configureMod(event.getSuggestedConfigurationFile());
-		
-		try
-		{
-			if(checkForUpdates)
-				updater.check(ModStrings.MOD_NAME, ModStrings.UPDATE_URL, 
-					ModInts.MAJOR, ModInts.MINOR, ModInts.REVISION);
-		}catch(Exception e){}
-		
-		ModItems.loadItems();
-		ModBlocks.loadBlocks();
-		
-		ModRecipes.loadRecipes();
-		
-		proxy.registerTickHandler();
-		
-		//proxy.registerKeyHandler();
+public class DivingGear {
+    public static boolean checkForUpdates;
+
+    @Mod.Instance(ModStrings.MOD_ID)
+    public static DivingGear instance;
+
+    @SidedProxy(clientSide = ModStrings.CLIENT, serverSide = ModStrings.COMMON)
+    public static CommonProxy proxy;
+
+    public static CreativeTabs modTab = new CreativeTabDG(
+            CreativeTabs.getNextID(), ModStrings.MOD_NAME);
+
+    public static UpdateHelper updater = new UpdateHelper();
+
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        Config.configureMod(event.getSuggestedConfigurationFile());
+
+        try {
+            if (checkForUpdates)
+                updater.check(ModStrings.MOD_NAME, ModStrings.UPDATE_URL,
+                        ModInts.MAJOR, ModInts.MINOR, ModInts.REVISION);
+        } catch (Exception e) {
+        }
+
+        ModItems.loadItems();
+        ModBlocks.loadBlocks();
+
+        ModRecipes.loadRecipes();
+
+        proxy.registerTickHandler();
+
+        // proxy.registerKeyHandler();
     }
 
-	@Mod.EventHandler
-    public void main(FMLInitializationEvent event)
-    {
-		GameRegistry.registerWorldGenerator(new WorldGenDiving());
-		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
-		
-		proxy.registerTileEntities();
+    @Mod.EventHandler
+    public void main(FMLInitializationEvent event) {
+        GameRegistry.registerWorldGenerator(new WorldGenDiving());
+        NetworkRegistry.instance().registerGuiHandler(instance,
+                new GuiHandler());
+
+        proxy.registerTileEntities();
     }
 
-	@Mod.EventHandler
-    public void postLoad(FMLPostInitializationEvent event)
-    {
-		ModRecipes.addonRecipes();
+    @Mod.EventHandler
+    public void postLoad(FMLPostInitializationEvent event) {
+        ModRecipes.addonRecipes();
     }
 }
